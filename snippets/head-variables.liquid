@@ -1,0 +1,119 @@
+{%- assign headings_font = settings.headings_font -%}
+{%- assign body_font = settings.body_font -%}
+{%- assign menus_font = settings.menus_font -%}
+
+<link rel="preload" href="{{ headings_font | font_url }}" as="font" type="font/woff2" crossorigin>
+
+{%- if body_font != headings_font -%}
+  <link rel="preload" href="{{ body_font | font_url }}" as="font" type="font/woff2" crossorigin>
+{%- endif -%}
+
+{%- if menus_font != body_font and menus_font != headings_font -%}
+  <link rel="preload" href="{{ menus_font | font_url }}" as="font" type="font/woff2" crossorigin>
+{%- endif -%}
+
+<style type="text/css">
+
+  {%- assign color_text = settings.color_text -%}
+  {%- assign color_text_brightness = color_text | color_brightness -%}
+  {%- if color_text_brightness > 150 -%}
+    {%- assign color_text_foreground = '#000' -%}
+  {%- else -%}
+    {%- assign color_text_foreground = '#fff' -%}
+  {%- endif -%}
+  
+  {%- assign color_accent = settings.color_accent -%}
+  {%- assign color_accent_brightness = color_accent | color_brightness -%}
+  {%- if color_accent_brightness > 150 -%}
+    {%- assign color_accent_foreground = '#000' -%}
+  {%- else -%}
+    {%- assign color_accent_foreground = '#fff' -%}
+  {%- endif -%}
+
+  {%- assign color_background = settings.color_background -%}
+  {%- assign color_background_second = settings.color_background | color_darken: 6 -%}
+  {%- assign color_background_third = settings.color_background | color_darken: 9 -%}
+  {%- assign color_background_fourth = settings.color_background | color_darken: 3 -%}
+
+  /* Fonts */
+
+  {{ headings_font | font_face: font_display: 'swap' }}
+
+  {{ body_font | font_face: font_display: 'swap' }}
+
+  {%- assign body_font_bold = body_font | font_modify: 'weight', 'bolder' -%}
+  {%- assign body_font_italic = body_font | font_modify: 'style', 'italic' -%}
+  {%- assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic' -%}
+
+  {%- if body_font -%}
+    {{ body_font_bold | font_face: font_display: 'swap' }}
+  {%- endif -%}
+
+  {%- if body_font_italic -%}
+    {{ body_font_italic | font_face: font_display: 'swap' }}
+  {%- endif -%}
+
+  {%- if body_font_bold_italic -%}
+    {{ body_font_bold_italic | font_face: font_display: 'swap' }}
+  {%- endif -%}
+
+  {{ menus_font | font_face: font_display: 'swap' }}
+
+  {%- assign menus_font_bold = menus_font | font_modify: 'weight', '600' -%}
+  {%- if menus_font_bold -%}
+    {{ menus_font_bold | font_face: font_display: 'swap' }}
+  {%- else -%}
+    {%- assign menus_font_bold = menus_font | font_modify: 'weight', 'bolder' -%}
+    {{ menus_font_bold | font_face: font_display: 'swap' }}
+  {%- endif -%}
+
+  :root {
+
+    /* Color variables */
+
+    --color-text: {{ color_text | color_extract: 'red' }}, {{ color_text | color_extract: 'green' }}, {{ color_text | color_extract: 'blue' }};
+    --color-text-foreground: {{ color_text_foreground | color_extract: 'red' }}, {{ color_text_foreground | color_extract: 'green' }}, {{ color_text_foreground | color_extract: 'blue' }};;
+
+    --color-accent: {{ color_accent | color_extract: 'red' }}, {{ color_accent | color_extract: 'green' }}, {{ color_accent | color_extract: 'blue' }};
+    --color-accent-foreground: {{ color_accent_foreground | color_extract: 'red' }}, {{ color_accent_foreground | color_extract: 'green' }}, {{ color_accent_foreground | color_extract: 'blue' }};
+
+    --color-background: {{ color_background | color_extract: 'red' }}, {{ color_background | color_extract: 'green' }}, {{ color_background | color_extract: 'blue' }};
+    --color-background-second: {{ color_background_second | color_extract: 'red' }}, {{ color_background_second | color_extract: 'green' }}, {{ color_background_second | color_extract: 'blue' }};
+    --color-background-third: {{ color_background_third | color_extract: 'red' }}, {{ color_background_third | color_extract: 'green' }}, {{ color_background_third | color_extract: 'blue' }};
+    --color-background-fourth: {{ color_background_fourth | color_extract: 'red' }}, {{ color_background_fourth | color_extract: 'green' }}, {{ color_background_fourth | color_extract: 'blue' }};
+
+    --color-body-text: {{ settings.color_text }};
+    --color-body: {{ settings.color_background }};
+    --color-bg: {{ settings.color_background }};
+
+    /* Font variables */
+
+    --font-stack-headings: {{ headings_font.family }}, {{ headings_font.fallback_families }};
+    --font-weight-headings: {{ headings_font.weight }};
+    --font-style-headings: {{ headings_font.style }};
+
+    --font-stack-body: {{ body_font.family }}, {{ body_font.fallback_families }};
+    --font-weight-body: {{ body_font.weight }};
+    {%- if body_font_bold -%}
+      --font-weight-body-bold: {{ body_font_bold.weight }}; 
+    {%- else -%}
+      --font-weight-body-bold: 700;
+    {%- endif -%}
+    --font-style-body: {{ body_font.style }};
+
+    --font-stack-menu: {{ menus_font.family }}, {{ menus_font.fallback_families }};
+    --font-weight-menu: {{ menus_font.weight }};
+    {%- if menus_font_bold -%}
+      --font-weight-menu-bold: {{ menus_font_bold.weight }}; 
+    {%- else -%}
+      --font-weight-menu-bold: 600; 
+    {%- endif -%}
+    --font-style-menu: {{ menus_font.style }};
+
+  }
+
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 12 8' style='enable-background:new 0 0 12 8; width: 12px; height: 8px;' xml:space='preserve'%3E%3Cpolyline fill='rgba({{ color_text | color_extract: 'red' }}, {{ color_text | color_extract: 'green' }}, {{ color_text | color_extract: 'blue' }}, .42)' points='0,2 2,0 6,4 10,0 12,2 6,8 0,2 '%3E%3C/polyline%3E%3C/svg%3E");;
+  }
+
+</style>

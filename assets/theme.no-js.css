@@ -1,0 +1,74 @@
+.shopify-section:not(.mount-slideshow) .site-box .site-box-background {
+  opacity: 1 !important;
+}
+.shopify-section:not(.mount-slideshow) .site-box .site-box-content, .shopify-section:not(.mount-slideshow) .template- div[class*="title"] .site-box-content, .template- .shopify-section:not(.mount-slideshow) div[class*="title"] .site-box-content, .shopify-section:not(.mount-slideshow) .template- div[class*="body"] .site-box-content, .template- .shopify-section:not(.mount-slideshow) div[class*="body"] .site-box-content, .shopify-section:not(.mount-slideshow) #shopify-product-reviews .spr-header .site-box-content, #shopify-product-reviews .shopify-section:not(.mount-slideshow) .spr-header .site-box-content, .shopify-section:not(.mount-slideshow) #shopify-product-reviews .spr-content .site-box-content, #shopify-product-reviews .shopify-section:not(.mount-slideshow) .spr-content .site-box-content {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+}
+.box__slideshow-split .slideshow-item .site-box-background-container div {
+  display: block !important;
+}
+.shopify-section.mount-slideshow .slideshow-item .site-box .site-box-content {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+}
+
+.box--product-image img {
+  opacity: 1;
+  visibility: visible;
+}
+.gallery-item {
+  text-align: center;
+  height: auto;
+}
+
+.site-header  {
+  background: rgba(var(--color-background), 1) !important;
+  border-bottom: 1px solid rgba(var(--color-background-third), 1) !important;
+  position: relative !important;
+}
+
+.site-header .site-nav-container {
+  display: block !important;
+}
+.site-nav.style--sidebar, .site-menu-handle {
+  display: none !important;
+}
+
+li.has-submenu:hover .submenu {
+  display: block;
+  z-index: 999;
+}
+
+.site-box.box__slideshow-split .slideshow-item .site-box-background-container div {
+  display: block !important;
+}
+.site-box.box__slideshow-split .slideshow-item .site-box.box--big.box--big {
+  border-bottom: 1px solid rgba(var(--color-background-third), 1);
+}
+
+@media screen and (min-width: 1025px) {
+  .site-header.desktop-view--minimal {
+    position: fixed !important;
+    background: rgba(var(--color-background), 1) !important;
+    height: auto;
+    padding: 20px 60px;
+  }
+  .site-header.desktop-view--minimal .logo {
+    margin: 0;
+    position: static;
+  }
+  .site-header.desktop-view--minimal .site-nav.style--classic {
+    position: static;
+    margin-right: -15px;
+  }
+}
+
+.product-variant {
+  display: block !important;
+}
+.productSelect {
+  display: block !important;
+  width: 100%;
+  height: 34px;
+}

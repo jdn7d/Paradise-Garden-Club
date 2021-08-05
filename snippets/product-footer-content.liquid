@@ -1,0 +1,124 @@
+{%- if block.settings.button == blank and block.settings.title == blank and block.settings.caption == blank and block.settings.link != blank -%}
+  {%- assign link_on = 'main' %}
+{%- elsif block.settings.button == blank and block.settings.link != blank -%}
+  {%- assign link_on = 'content' %}
+{%- else -%}
+  {%- assign link_on = 'button' %}
+{%- endif -%}
+
+{% if link_on == 'main' %}
+  <a href="{{ block.settings.link | escape }}" 
+{% else %}
+  <div 
+{% endif %}
+
+  id="block-{{ block.id }}" {{ block.shopify_attributes }} 
+  class="site-box box--center-align box--column-flow {{ size_class }} box__image-text {% unless block.settings.video == blank %} type-video {% endunless %} box__collection-footer align--{{ block.settings.txt_align }} button-{{ block.settings.button }} {% if link_on == 'content' %} hard-align {% endif %}" 
+  data-order="{{ index | minus: 1 }}">
+
+  {% if link_on == 'content' %}
+    <a href="{{ block.settings.link | escape }}"
+  {% else %}
+    <div 
+  {% endif %}
+
+    class="site-box-content">
+
+    <div class="content">
+
+      {%- unless block.settings.title == blank -%}
+        <h2 class="title {% unless block.settings.button != blank %} add-hr {% endunless %}">{{ block.settings.title | escape }}</h2>
+      {%- endunless -%}
+
+      {%- unless block.settings.caption == blank -%}
+        <p class="caption">{{ block.settings.caption | escape }}</p>
+      {%- endunless -%}
+
+      {%- unless block.settings.button == blank -%}
+        <a class="button with-icon {{ style }}" {% unless block.settings.link == blank %} href="{{ block.settings.link }}" {% endunless %}> {{ block.settings.button | escape }} <span class="icon" aria-hidden="true">{% render 'theme-symbols', icon: 'arrow_icon_smallest' %}</span></a>
+      {%- endunless -%}
+
+    </div>
+
+  {%- if link_on == 'content' %}
+    </a>
+  {%- else -%}
+    </div>
+  {%- endif -%}
+
+  {%- unless block.settings.video == blank -%}
+    <div class="site-box-video-background" data-src="{{ block.settings.video }}"></div>
+  {%- endunless -%}
+
+ {%- unless block.settings.image == blank -%}
+
+    <span class="site-box-background with-image" aria-hidden="true">
+      
+      <img
+        src="{{ block.settings.image | img_url: '960x' }}" alt="{{ block.settings.image.alt | escape }}"
+        srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+        data-srcset="{{ block.settings.image | img_url: '600x' }} 480w, {{ block.settings.image | img_url: '860x' }} 720w, {{ block.settings.image | img_url: '1100x' }} 960w, {{ block.settings.image | img_url: '1600x' }} 1440w, {{ block.settings.image | img_url: '2100x' }} 1920w"
+        data-sizes="auto"
+        class="lazyload"
+        style="object-position: {{ block.settings.bg_alignment }}" />
+
+      {%- if settings.show_preloader and block.settings.button == blank and block.settings.title == blank and block.settings.caption == blank -%}
+        <span class="lazy-preloader"></span>
+      {%- endif -%}
+
+      <noscript><span class="ll-fallback" style="background-image:url({{ block.settings.image | img_url: '960x' }})"></span></noscript> 
+
+    </span> 
+
+  {%- endunless -%}
+
+{%- if link_on == 'main' -%}
+  </a>
+{%- else -%}
+  </div> 
+{%- endif -%}
+
+{%- if block.settings.color_text != 'rgba(0,0,0,0)' -%}
+
+  {%- assign color_text = block.settings.color_text -%}
+  {%- assign color_text_brightness = color_text | color_brightness -%}
+  {%- if color_text_brightness > 150 -%}
+    {%- assign color_text_foreground = '#000' -%}
+  {%- else -%}
+    {%- assign color_text_foreground = '#fff' -%}
+  {%- endif -%}
+
+  {%- assign color_accent = settings.color_accent -%}
+  {%- assign color_accent_brightness = color_accent | color_brightness -%}
+  {%- if color_accent_brightness > 150 -%}
+    {%- assign color_accent_foreground = '#000' -%}
+  {%- else -%}
+    {%- assign color_accent_foreground = '#fff' -%}
+  {%- endif -%} 
+
+  {%- style -%}
+    #block-{{ block.id }}.box__image-text,
+    #block-{{ block.id }}.box__image-text a.site-box-content {
+      color: {{ block.settings.color_text }};
+    }
+    #block-{{ block.id }}.box__image-text .title.add-hr:after {
+      background: {{ block.settings.color_text }};
+    }
+    #block-{{ block.id }}.box__image-text a.button {
+      background: {{ block.settings.color_text }};
+      color: {{ color_text_foreground }} !important;
+    }
+    #block-{{ block.id }}.box__image-text a.button:hover {
+      color: {{ color_accent_foreground }} !important;
+    }
+  {%- endstyle -%}
+
+{%- endif -%}
+
+{%- if block.settings.color_bg != 'rgba(0,0,0,0)' -%}
+  {%- style -%}
+    #block-{{ block.id }} .site-box-background.with-image:after {
+      background: {{ block.settings.color_bg }};
+    }
+  {%- endstyle -%}
+{%- endif -%}

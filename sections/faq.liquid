@@ -1,0 +1,105 @@
+<div class="site-box-container container--fullscreen box--can-stick">
+
+  <div class="site-box box--big lap--box--small-fl box--typo-big box--top-align box--column-flow box__heading box--add-hr" data-order="0">
+    <div class="reduce-top-margin">
+      <div class="site-box-content less-padding">
+        <h1 class="title">
+          {{ page.title }}
+        </h1>
+      </div>
+    </div>
+  </div>
+
+   <div class="site-box box--big lap--box--bigger box__text box--typo-big box--top-align box--column-flow" data-order="1">
+
+    <div class="site-box-content reduce-top-margin">
+
+      <div>
+      
+        {% unless page.content == blank %}
+          <div class="rte">
+            {{ page.content }}
+          </div>
+        {% endunless %}
+
+        {%- if section.blocks.size > 0 -%}
+
+          <div class="krown-tabs" data-design="toggles">
+            
+            <div class="titles">
+              {% for block in section.blocks %}
+                <h5 class="krown-tab-title {% if forloop.first and section.settings.open_first %} opened {% endif %}" {{ block.shopify_attributes }}>
+                  {{ block.settings.title | escape }}
+                  <span class="minus"><svg version="1.0" class="svg minus" xmlns="//www.w3.org/2000/svg" xmlns:xlink="//www.w3.org  /1999/xlink" x="0px" y="0px" width="10px" height="10px" viewBox="0 0 10 10" enable-background="new 0 0 10 10" xml:space="preserve"><rect y="4" width="10" height="2"/></svg></span>
+                  <span class="plus"><svg version="1.0" class="svg minus" xmlns="//www.w3.org/2000/svg" xmlns:xlink="//www.w3.org  /1999/xlink" x="0px" y="0px" width="10px" height="10px" viewBox="0 0 10 10" enable-background="new 0 0 10 10" xml:space="preserve"><rect y="4" width="10" height="2"/><rect y="4" width="10" height="2" style="transform: rotate(-90deg);transform-origin: center;"/></svg></span>
+                </h5>
+              {% endfor %}
+            </div>
+
+            <div class="contents">
+              {% for block in section.blocks %}
+                <div class="tab">
+                  {{ block.settings.body }}
+                  {%- unless block.settings.image == blank -%}
+                    <a href="{{ block.settings.image | img_url: 'master' }}" target="_blank" class="basic-lightbox-image">
+                      <figure style="padding-top: {{ 100 | divided_by: block.settings.image.aspect_ratio }}%">
+                        <img
+                          src="{{ block.settings.image | img_url: '460x' }}" alt="{{ block.settings.image.alt | escape }}"
+                          srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                          data-srcset="{{ block.settings.image | img_url: '460x' }} 380w, {{ block.settings.image | img_url: '660x' }} 760w, {{ block.settings.image | img_url: '960x' }} 860w"
+                          data-sizes="auto"
+                          class="lazyload dont-extract" 
+                        />
+                        {%- if settings.show_preloader -%}
+                          <span class="lazy-preloader"></span>
+                        {%- endif -%}
+                      </figure>
+                    </a>
+                  {% endunless %}
+                </div>  
+              {% endfor %}
+            </div>
+
+          </div>
+          
+        {%- endif -%}
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+{% schema %}
+  {
+    "name": "FAQ",
+    "class": "mount-tabs",
+    "blocks": [
+      {
+        "type": "text",
+        "name": "Extra content",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Question title"
+          },
+          {
+            "type": "richtext",
+            "id": "body",
+            "label": "Text",
+            "default": "<p>Write a complete answer to the most frequent questions that your customers might have, such as important product information, shipping policies, payment issues or returns.</p>"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,542 @@
+<header id="site-header" class="site-header desktop-view--{{ section.settings.menu_style }} header-scroll" data-logo_height="{{ section.settings.logo_height }}">
+
+  <!-- logo -->
+  
+  {%- if template == 'index' -%}
+    <h1 class="logo">
+  {%- else -%}
+    <span class="logo">
+  {%- endif -%}
+    {%- if section.settings.logo_src -%}
+      <a class="logo-img" href="{{ routes.root_url }}" style="height:var(--header-logo);display:flex;align-items:center">
+        <img src="{{ section.settings.logo_src | img_url: 'master' }}" alt="{{ shop.name | escape }}" style="max-height:{{ section.settings.logo_height }}px" />
+      </a>
+    {%- else -%}
+      <a class="logo-txt" href="{{ routes.root_url }}">{{ shop.name | escape }}</a>
+    {%- endif -%}
+  {%- if template == 'index' -%}
+    </h1>
+  {%- else -%}
+    </span>
+  {%- endif -%}
+
+  {%- render 'head-size', logo: section.settings.logo_src, logo_height: section.settings.logo_height -%}
+
+  <!-- menu -->
+
+  <div id="site-nav--desktop" class="site-nav style--classic">
+
+    {%- if section.settings.show_promotion_block -%}
+      {%- capture promotion_block -%}
+        <div class="clearfix"><div class="menu-promotion site-box" id="menu-promotion">
+
+          <div>
+
+            <h4 class="title">{{ section.settings.promotion_header | escape }}</h4>
+            <div class="rte">{{ section.settings.promotion_content }}</div>
+            {%- if section.settings.promotion_button_label != blank -%}
+              <a class="button" href="{{ section.settings.promotion_button_link | escape }}">{{ section.settings.promotion_button_label | escape }}</a>
+            {%- endif -%}
+
+            {%- unless section.settings.promotion_image == blank -%}
+              <div class="site-box-background no-preloader with-image">
+                {% assign image = section.settings.promotion_image %}
+                <img
+                  src="{{ image | img_url: '240x' }}" alt="{{ image.alt | escape }}"
+                  srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                  data-srcset="{{ image | img_url: '240x' }} 180w, {{ image | img_url: '360x' }} 300w, {{ image | img_url: '600x' }} 480w, {{ image | img_url: '860x' }} 720w"
+                  data-sizes="auto"
+                  class="lazyload" 
+                />
+              </div>
+            {%- endunless -%}
+
+          </div>
+
+          <style type="text/css">
+            {%- liquid
+              assign color_text_brightness = section.settings.promotion_color_txt | color_brightness
+              if color_text_brightness > 65
+                assign color_text_contrast = '#000'
+              else
+                assign color_text_contrast = '#fff'
+              endif
+            -%}
+            #menu-promotion > div {
+              color: {{ section.settings.promotion_color_txt }};
+            }
+            #menu-promotion a {
+              color: {{ section.settings.promotion_color_txt }};
+            }
+            #menu-promotion .button {
+              color: {{ color_text_contrast }} !important;
+              background: {{ section.settings.promotion_color_txt }} !important;
+            }
+            {%- if section.settings.promotion_image == blank -%}
+              #menu-promotion > div {
+                background: {{ section.settings.promotion_color_bg }};
+              }
+            {%- else -%}
+              #menu-promotion .site-box-background.with-image:after {
+                background: {{ section.settings.promotion_color_bg }};
+              }
+            {%- endif -%}
+          </style>
+
+        </div></div>
+      {%- endcapture -%}
+    {%- endif -%}
+
+    {%- if section.settings.menu_style == 'classic' -%}
+      <div class="site-nav-container portable--hide">
+        <nav class="primary-menu">
+          {% render 'site-nav', linklist: section.settings.main_linklist, collection_linklist: section.settings.collection_linklist, show_collection_images: section.settings.show_collection_image, promotion_block: promotion_block, type: 'classic' %}
+        </nav>
+      </div>
+    {%- endif -%}
+
+    {%- if template.name == 'collection' -%}
+
+      <button id="site-filter-handle" class="site-filter-handle" aria-label="{{ 'general.navigation.open_filters' | t }}">
+        <span class="filter-menu" aria-hidden="true">
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </span>
+      </button>
+
+    {%- endif -%}
+
+    <span {% if settings.predictive_search_enabled and template != 'search' %} id="site-search-handle" {% endif %} class="site-search-handle" aria-label="{{ 'general.navigation.open_search' | t }}" title="{{ 'general.navigation.open_search' | t }}">
+
+      <a href="{{ routes.search_url }}">
+        <span class="search-menu" aria-hidden="true">
+          {% render 'theme-symbols', icon: 'search_icon' %}
+        </span>
+      </a>
+
+    </span>
+
+    <span id="site-cart-handle" class="site-cart-handle {{ settings.cart_action }}" aria-label="{{ 'general.navigation.open_cart' | t }}" title="{{ 'general.navigation.open_cart' | t }}">
+    
+        <a href="{{ routes.cart_url }}">
+          <span class="cart-menu" aria-hidden="true">
+            {% render 'theme-symbols', icon: 'cart_icon' %}
+            <span class="count-holder"><span class="count">{{ cart.item_count }}</span></span>
+          </span>
+        </a>
+  
+    </span>
+
+    <button id="site-menu-handle" class="site-menu-handle hide portable--show" aria-label="{{ 'general.navigation.open_menu' | t }}" title="{{ 'general.navigation.open_menu' | t }}">
+      <span class="hamburger-menu" aria-hidden="true"><span class="bar"></span></span>
+    </button>
+
+  </div>
+
+  {%- if section.settings.bar_enable -%}
+
+    {%- if section.settings.bar_home_only == false or template == 'index' and section.settings.bar_home_only -%}
+
+      <div class="box__banner style--bar" style="display:none;">
+
+        {%- if section.settings.bar_link != blank -%}
+          <a href="{{ section.settings.bar_link }}">
+        {%- endif -%}
+
+          <div class="content">{{ section.settings.bar_content }}</div>
+
+        {%- if section.settings.bar_link != blank -%}
+          </a>
+        {%- endif -%}
+
+        <style>
+          .site-header .box__banner {
+            background-color: {{ section.settings.bar_bgcolor }};
+            color: {{ section.settings.bar_txtcolor }} !important;
+          }
+          .site-header .box__banner a {
+            color: {{ section.settings.bar_txtcolor }} !important;
+          }
+          .site-header .box__banner svg * {
+            fill: {{ section.settings.bar_txtcolor }};
+          }
+        </style>
+
+        <script type="text/javascript">
+          var ad = localStorage.getItem('announcement-dismissed'),
+              mo = (new Date().getMonth());
+          if ( ad != mo ) {
+            document.querySelector('.box__banner').style.display = 'block';
+            document.querySelector('.site-header').style.marginTop = '34px';
+            document.querySelector('body').classList.add('with-announcement');
+          }
+        </script>
+
+        {%- if section.settings.bar_show_dismiss -%}
+          <span class="exit" aria-label="{{ 'general.navigation.close' | t }}">{% render 'theme-symbols', icon: 'close_icon' %}</span>
+        {%- endif -%}
+
+      </div>
+
+    {%- endif -%}
+
+  {%- endif -%}
+
+</header>
+
+<div id="site-nav--mobile" class="site-nav style--sidebar">
+  
+  <!-- close button -->
+
+  <button id="site-close-handle" class="site-close-handle" aria-label="{{ 'general.navigation.close_sidebar' | t }}" title="{{ 'general.navigation.close_sidebar' | t }}">
+    <span class="hamburger-menu active" aria-hidden="true"><span class="bar animate"></span></span>
+  </button>
+
+  <!-- navigation -->
+
+  <div id="site-navigation" class="site-nav-container">
+
+    <div class="site-nav-container-last">
+
+      <p class="title sidebar-title">{{ 'sidebar.menu' | t }}</p>
+
+      <div class="top">
+
+        <nav class="primary-menu">{%- render 'site-nav', linklist: section.settings.main_linklist, collection_linklist: section.settings.collection_linklist, show_collection_images: false, type: 'sidebar' -%}</nav>
+
+      </div>
+
+      <div class="to-bottom-content">
+
+        {%- liquid
+          if promotion_block
+            echo promotion_block
+          endif
+        -%}
+
+        {%- render 'social-icons', size: 'regular' -%}
+
+        <div class="site-copyright">
+          <p class="copy">{{ 'general.copyright' | t }} &copy; {{ 'now' | date: "%Y" }} <a href="{{ routes.root_url }}">{{ shop.name | escape }}</a></p>
+          <p class="powered">{{ powered_by_link }}</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- filters -->
+
+  {%- if template.name == 'collection' -%}
+
+    <div id="site-filters" class="site-nav-container" tabindex="-1">
+
+      <div class="site-nav-container-last">
+
+        <p class="title sidebar-title">{{ 'sidebar.collection_filters.title' | t }}</p>
+        <p class="subtitle">{{ 'sidebar.collection_filters.items_count' | t: count: collection.products.size, collection: collection.title }}</p> 
+
+        <div class="top">
+
+          <div class="option filter-by-tags">
+            <label for="filter-by">{{ 'collections.filtering.title' | t }}</label>
+            <select name="filter-by" class="filter-by">
+                <option value="">{{ 'collections.filtering.all' | t }}</option>
+                {% for tag in collection.all_tags %}
+                  {%- if current_tags contains tag -%}
+                    <option value="{{ tag | handle }}" selected>{{ tag }}</option>
+                  {% else %}
+                    <option value="{{ tag | handle }}">{{ tag }}</option>
+                  {% endif %}
+                {%- endfor -%}
+            </select>
+          </div>
+
+          {%- if collection.all_tags.size > 0 -%}
+
+            <div class="option filter-by-groups">
+
+              <label for="filter-by">{{ 'collections.filtering.title' | t }}</label>
+
+              {%- liquid
+               assign categories = '' 
+                for tag in collection.all_tags
+                  if tag contains '_'
+                    capture categories
+                      unless categories == blank
+                        echo categories
+                        echo '|'
+                      endunless
+                      echo tag | split: '_' | first
+                    endcapture
+                  endif
+                endfor
+                assign cat_array = categories | split: '|' | uniq
+              -%}
+
+              {%- for cat_item in cat_array -%}
+
+                <div class="option-children">
+
+                  <select name="filter-by" class="filter-by" data-label="{{ cat_item }}">
+
+                    <option value="" disabled selected hidden style="display:none">{{ cat_item }}</option>
+                    <option value="">{{ 'sidebar.collection_filters.none_selected' | t }}</option>
+
+                    {%- for tag in collection.all_tags -%}
+
+                      {%- assign cat = tag | split: '_' | first -%} 
+
+                      {%- if cat != tag and cat_item == cat -%}
+
+                        {%- if current_tags contains tag -%}
+                          <option class="advanced-filter active-filter" data-group="{{ cat_item }}" value="{{ tag | handle }}" selected>{{ tag | remove_first: cat_item | remove_first: '_' | link_to_remove_tag: tag }}</option>
+                        {%- else -%}
+                          <option class="advanced-filter" data-group="{{ cat_item }}" value="{{ tag | handle }}">{{ tag | remove_first: cat_item | remove_first: '_' | link_to_add_tag: tag }}</option>
+                        {%- endif -%}
+
+                      {%- endif -%}
+
+                    {%- endfor -%}
+
+                  </select>
+
+                </div>
+
+              {%- endfor -%}
+
+            </div>
+
+          {%- endif -%}
+
+          <div class="option">
+            <label for="sort-by">{{ 'collections.sorting.title' | t }}</label>
+            <select name="sort-by" id="sort-by">
+              <option value="manual">{{ 'collections.sorting.featured' | t }}</option>
+              <option value="best-selling">{{ 'collections.sorting.best_selling' | t }}</option>
+              <option value="title-ascending">{{ 'collections.sorting.az' | t }}</option>
+              <option value="title-descending">{{ 'collections.sorting.za' | t }}</option>
+              <option value="price-ascending">{{ 'collections.sorting.price_ascending' | t }}</option>
+              <option value="price-descending">{{ 'collections.sorting.price_descending' | t }}</option>
+              <option value="created-descending">{{ 'collections.sorting.date_descending' | t }}</option>
+              <option value="created-ascending">{{ 'collections.sorting.date_ascending' | t }}</option>
+            </select>
+          </div>
+
+          <button id="apply-sort-filter" class="button" style="margin-right: 10px;">{{ 'sidebar.collection_filters.submit' | t }}</button>
+
+          <button id="clear-sort-filter" class="button">{{ 'sidebar.collection_filters.clear' | t }}</button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  {%- endif -%}
+
+  <!-- search -->
+
+  <div id="site-search" class="site-nav-container" tabindex="-1">
+
+    <div class="site-nav-container-last">
+
+      <p class="title sidebar-title">{{ 'sidebar.search' | t }}</p>
+
+      {%- render 'search-form', type: 'ajax' -%}
+
+      <div class="top">
+        <div id="search-results" class="search-results predictive-search {% if settings.predictive_search_enable == false %} false-predictive {% endif %}"></div>
+      </div>
+
+      <div id="site-search-footer"></div>
+
+    </div>
+
+  </div>
+
+  <!-- cart -->
+  
+  <div id="site-cart" class="site-nav-container" tabindex="-1">
+
+    <div class="site-nav-container-last">
+
+      <div class="site-cart-heading">
+
+        <p class="title sidebar-title">{{ 'sidebar.cart.title' | t }}</p>
+        
+        <p class="subtitle" data-added-singular="{{ 'sidebar.cart.added_items_count.one' | t }}" data-added-plural="{{ 'sidebar.cart.added_items_count.other' | t }}">{{ 'sidebar.cart.items_count' | t: count: cart.item_count }}</p> 
+
+      </div>
+
+      <div class="top"> 
+        {%- liquid
+          unless template contains 'cart'
+            render 'cart-form', type: 'sidebar'
+          endunless
+        -%}
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+{% schema %}
+  {
+    "name": "Header",
+    "class": "mount-header",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo_src",
+        "label": "Logo image"
+      },
+      {
+        "type": "range",
+        "id": "logo_height",
+        "label": "Logo image maximum height",
+        "unit": "px",
+        "min": 20,
+        "max": 140,
+        "step": 2,
+        "default": 40
+      },
+      {
+        "type": "link_list",
+        "id": "main_linklist",
+        "label": "Menu",
+        "default": "main-menu"
+      },
+      {
+        "type": "select",
+        "id": "menu_style",
+        "label": "Desktop menu style",
+        "options": [
+          {
+            "value": "classic",
+            "label": "Classic"
+          },
+          {
+            "value": "minimal",
+            "label": "Minimal"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Collections menu",
+        "info": "This has a bold design, especially in the classic menu style, where it transforms into a mega menu with the possibility of adding images and a promotion."
+      },
+      {
+        "type": "link_list",
+        "id": "collection_linklist",
+        "label": "Menu"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_collection_image",
+        "label": "Show collection images",
+        "default": true,
+        "info": "Only applies if the parent items is a collection."
+      },
+      {
+        "type": "header",
+        "content": "Promotion block"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_promotion_block",
+        "label": "Show promotion block",
+        "default": false,
+        "info": "In minimal style it shows at the bottom of the menu drawer. In classic style it shows in the collections menu, if present."
+      },
+      {
+        "type": "text",
+        "id": "promotion_header",
+        "label": "Promotion title"
+      },
+      {
+        "type": "richtext",
+        "id": "promotion_content",
+        "label": "Promotion content"
+      },
+      {
+        "type": "text",
+        "id": "promotion_button_label",
+        "label": "Promotion button label"
+      },
+      {
+        "type": "url",
+        "id": "promotion_button_link",
+        "label": "Promotion button link"
+      },
+      {
+        "type": "color",
+        "id": "promotion_color_txt",
+        "label": "Promotion text color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "promotion_color_bg",
+        "label": "Promotion background color",
+        "default": "#f3f3f3"
+      },
+      {
+        "type": "image_picker",
+        "id": "promotion_image",
+        "label": "Promotion image"
+      },
+      {
+        "type": "header",
+        "content": "Announcement bar"
+      },
+      {
+        "type": "checkbox",
+        "id": "bar_enable",
+        "label": "Show announcement",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "bar_home_only",
+        "label": "Home page only",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "bar_show_dismiss",
+        "label": "Show dismiss button",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "bar_content",
+        "label": "Content",
+        "default": "Use this bar for a short, important announcement.",
+        "info": "Max 50 characters"
+      },
+      {  
+        "type": "url",
+        "id": "bar_link",
+        "label": "Link",
+        "info": "Optional"
+      },
+      {
+        "type": "color",
+        "id": "bar_bgcolor",
+        "label": "Background color",
+        "default": "#D23232"
+      },
+      {
+        "type": "color",
+        "id": "bar_txtcolor",
+        "label": "Text color",
+        "default": "#ffffff"
+      }
+    ]
+  }
+{% endschema %}

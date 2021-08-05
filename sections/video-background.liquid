@@ -1,0 +1,164 @@
+<div id="section-{{ section.id }}" class="site-box-container container--fullscreen">
+
+  <div class="site-box box--typo-bigger box--center-align box--column-flow box__video-background box__image-text button-true align--{{ section.settings.txt_align }}">
+
+    <div class="site-box-content">
+
+      <div class="content">
+
+        {%- unless section.settings.caption == blank -%}
+          <p class="caption">{{ section.settings.caption | escape }}</p>
+        {%- endunless -%}
+
+        {%- unless section.settings.heading == blank -%}
+          <h2 class="title">{{ section.settings.heading | escape }}</h2>
+        {%- endunless -%}
+
+        {%- unless section.settings.button == blank -%}
+          <a class="button with-icon" {% unless section.settings.link == blank %} href="{{ section.settings.link }}" {% endunless %}> {{ section.settings.button | escape }} <span class="icon" aria-hidden="true">{% render 'theme-symbols', icon: 'arrow_icon_smallest' %}</span></a>
+        {%- endunless -%}
+
+      </div>
+
+    </div>
+
+    {%- unless section.settings.video == blank -%}
+      <div class="site-box-video-background" data-src="{{ section.settings.video }}"></div>
+    {%- endunless -%}
+
+    {%- unless section.settings.image == blank -%}
+
+      <span class="site-box-background with-image" aria-hidden="true">
+        
+        <img
+          src="{{ section.settings.image | img_url: '960x' }}" alt="{{ section.settings.image.alt | escape }}"
+          srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+          data-srcset="{{ section.settings.image | img_url: '600x' }} 480w, {{ section.settings.image | img_url: '860x' }} 720w, {{ section.settings.image | img_url: '1100x' }} 960w, {{ section.settings.image | img_url: '1600x' }} 1440w, {{ section.settings.image | img_url: '2100x' }} 1920w"
+          data-sizes="auto"
+          class="lazyload" />
+
+        <noscript><span class="ll-fallback" style="background-image:url({{ section.settings.image | img_url: '960x' }})"></span></noscript> 
+
+      </span> 
+
+    {%- endunless -%}
+        
+  </div>
+
+  {%- if section.settings.color_text != 'rgba(0,0,0,0)' -%}
+
+    {%- assign color_text = section.settings.color_text -%}
+    {%- assign color_text_brightness = color_text | color_brightness -%}
+    {%- if color_text_brightness > 150 -%}
+      {%- assign color_text_foreground = '#000' -%}
+    {%- else -%}
+      {%- assign color_text_foreground = '#fff' -%}
+    {%- endif -%}
+    
+    {%- assign color_accent = settings.color_accent -%}
+    {%- assign color_accent_brightness = color_accent | color_brightness -%}
+    {%- if color_accent_brightness > 150 -%}
+      {%- assign color_accent_foreground = '#000' -%}
+    {%- else -%}
+      {%- assign color_accent_foreground = '#fff' -%}
+    {%- endif -%}
+
+    {%- style -%}
+      #section-{{ section.id }} .box__image-text,
+      #section-{{ section.id }} .box__image-text a.site-box-content {
+        color: {{ section.settings.color_text }};
+      }
+      #section-{{ section.id }} .box__image-text .title.add-hr:after {
+        background: {{ section.settings.color_text }};
+      }
+      #section-{{ section.id }} .box__image-text a.button {
+        background: {{ section.settings.color_text }};
+        color: {{ color_text_foreground }} !important;
+      }
+      #section-{{ section.id }} .box__image-text a.button:hover {
+        color: {{ color_accent_foreground }} !important;
+      }
+    {%- endstyle -%}
+
+  {%- endif -%}
+
+
+</div>
+
+{% schema %}
+  {
+    "name": "Background video",
+    "class": "index-section mount-video-background",
+    "settings": [
+      {
+        "id": "video",
+        "type": "text",
+        "label": "Video URL",
+        "info": "Path to an .mp4 video file",
+        "default": "//cdn.shopify.com/s/files/1/0266/9543/4315/files/Share_your_brand_story_by_adding_a_video_to_your_store.mp4?3663"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Fallback image",
+        "info": "A fallback image will be used on mobile devices where autoplay might be disabled."
+      },
+      {
+        "type": "header",
+        "content": "Text"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Video title"
+      },
+      {
+        "type": "text",
+        "id": "caption",
+        "label": "Caption",
+        "default": "Share your brand's story"
+      },
+      {
+        "type": "text",
+        "id": "button",
+        "label": "Button label"
+      },
+      {
+        "type": "url",
+        "id": "link",
+        "label": "Button link"
+      },
+      {
+        "type": "select",
+        "id": "txt_align",
+        "label": "Text alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "center"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text color",
+        "default": "rgba(0,0,0,0)"
+      }
+    ],
+    "presets": [{
+      "name": "Video Background",
+      "category": "Video"
+    }]
+  }
+{% endschema %}

@@ -1,0 +1,87 @@
+<div id="section-{{ section.id }}" class="site-box-container container--fullscreen box--can-stick add-border" data-order="0">
+
+  <div class="site-box box--big lap--box--small-fl box__heading">
+    <div class="site-box-background">
+
+      {% if section.settings.image == blank %}
+
+        <span class="onboarding-svg">{{ 'collection-1' | placeholder_svg_tag }}</span>
+
+      {% else %}
+
+        <img
+          src="{{ section.settings.image | img_url: '960x' }}" alt="{{ section.settings.image.alt | escape }}"
+          srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+          data-srcset="{{ section.settings.image | img_url: '600x' }} 480w, {{ section.settings.image | img_url: '860x' }} 720w, {{ section.settings.image | img_url: '1100x' }} 960w, {{ section.settings.image | img_url: '1600x' }} 1440w, {{ section.settings.image | img_url: '2100x' }} 1920w"
+          data-sizes="auto"
+          class="lazyload" 
+        />
+
+      {% if settings.show_preloader %}
+        <span class="lazy-preloader"></span>
+      {% endif %}
+
+        <noscript><span class="ll-fallback" style="background-image:url({{ section.settings.image | img_url: '960x' }})"></span></noscript> 
+
+      {% endif %}
+
+    </div>
+  </div>
+
+  <div class="site-box box--big lap--box--bigger box__shop-the-look box--center-align box--column-flow" data-order="1">
+    <div class="site-box-content">
+      <h3 class="title">{{ section.settings.title | escape }}</h3>
+      <div class="product-carousel" data-size="{{ section.blocks.size }}" data-id="{{ section.id }}">
+        {%- for block in section.blocks -%}
+          {%- render 'shop-the-look-content', product: all_products[block.settings.product], id: block.id -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% schema %}
+  {
+    "name": "Collection list",
+    "class": "index-section mount-images mount-shop-the-look",
+    "max_blocks": 4,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Shop the Look"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "product",
+        "name": "Product",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+          }
+        ]
+      }
+    ], 
+    "presets": [{
+      "name": "Shop the look",
+      "category": "Product",
+      "blocks": [{
+        "type": "product"
+      },{
+        "type": "product"
+      },{
+        "type": "product"
+      }]
+    }]
+  }
+{% endschema %}

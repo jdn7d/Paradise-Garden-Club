@@ -1,0 +1,210 @@
+<div id="section-{{ section.id }}" class="site-box-container container--fullscreen add-border">
+
+  {%- unless section.settings.title == blank -%}
+    <div class="site-box box--small-fl box__heading box--typo-big box--center-align box--column-flow box--add-hr">
+      <div class="site-box-content">
+        <div class="content">
+          <h2 class="title">{{ section.settings.title | escape }}</h2>
+        </div>
+      </div>
+    </div>
+  {%- endunless -%}
+
+  {%- for block in section.blocks -%}
+
+    {%- assign collection = collections[block.settings.collection] -%}
+    {%- assign index = forloop.index -%}
+    {%- assign size = section.blocks.size -%}
+
+    {%- if collection == empty -%}
+      {%- assign c_title = 'Collection title' -%}
+      {%- assign c_link = '' -%}
+    {%- else -%}
+      {%- assign c_title = collection.title -%}
+      {%- assign c_link = collection.url -%}
+    {%- endif -%}
+
+    {%- if size == 1 -%}
+      {%- assign size_class = 'box--bigger box--typo-bigger lap--box--small-fl fix-me-with-height' -%}
+    {%- elsif size == 2 and index < 3 -%}
+      {% assign size_class = 'box--big box--typo-big lap--box--small-lg palm--box--small-fl' %}
+    {%- else -%}
+      {%- if index == 1 -%}
+        {%- assign size_class = 'box--big box--typo-big lap--box--small-lg palm--box--small-fl' -%}
+      {%- elsif index == 2 -%}
+        {%- assign size_class = 'box--small-lg box--typo-big  palm--box--small-fl' -%}
+      {%- elsif index == 3 and size == 3 -%}
+        {%- assign size_class = 'box--small-lg box--typo-big palm--box--small-fl' -%}
+      {%- else -%}
+        {%- assign size_class = 'box--small box--typo-small lap--box--small-lg palm--box--small-fl' -%}
+      {%- endif -%}
+    {%- endif -%}
+
+    <div id="block-{{ block.id }}" {{ block.shopify_attributes }} class="site-box box--center-align box--column-flow {{ size_class }} box__image-text hard-align align--{{ section.settings.txt_align }} button-true" data-order="{{ index | minus: 1 }}">
+
+      <a class="site-box-content" href="{{ c_link }}">
+
+        <div class="content">
+          <h2 class="title add-hr">{{ c_title | escape }}</h2>
+        </div>
+
+      </a>
+
+      <span class="site-box-background with-image" aria-hidden="true">
+
+        {%- assign image = block.settings.collection_image -%}
+
+        {% unless image == blank %}
+          {% assign collection_image = image %}
+        {% else %}
+          {% assign collection_image = collection.image %}
+        {% endunless %}
+
+        {%- unless collection_image == blank -%}
+          <img
+            src="{{ collection_image | img_url: '960x' }}" alt="{{ collection_image | escape }}"
+            srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+            data-srcset="{{ collection_image | img_url: '480x' }} 360w, {{ collection_image | img_url: '600x' }} 480w, {{ collection_image | img_url: '1100x' }} 960w, {{ collection_image | img_url: '1600x' }} 1440w, {{ collection_image | img_url: '2100x' }} 1920w"
+            data-sizes="auto"
+            class="lazyload"
+          />
+          <noscript><span class="ll-fallback" style="background-image:url({{ collection_image | img_url: '960x' }})"></span></noscript> 
+        {%- else -%}
+          {%- assign no = index | modulo:6 | plus:1 -%}
+          <span class="onboarding-svg">{{ 'collection-X' | replace: 'X', no | placeholder_svg_tag }}</span>
+        {%- endunless -%}
+
+      </span>
+
+    </div>
+
+  {% endfor %}
+
+  {%- if section.settings.color_text != 'rgba(0,0,0,0)' -%}
+
+    {%- assign color_text = section.settings.color_text -%}
+    {%- assign color_text_brightness = color_text | color_brightness -%}
+    {%- if color_text_brightness > 150 -%}
+      {%- assign color_text_foreground = '#000' -%}
+    {%- else -%}
+      {%- assign color_text_foreground = '#fff' -%}
+    {%- endif -%}
+
+    {%- assign color_accent = settings.color_accent -%}
+    {%- assign color_accent_brightness = color_accent | color_brightness -%}
+    {%- if color_accent_brightness > 150 -%}
+      {%- assign color_accent_foreground = '#000' -%}
+    {%- else -%}
+      {%- assign color_accent_foreground = '#fff' -%}
+    {%- endif -%} 
+
+    {%- style -%}
+      #section-{{ section.id }} .box__image-text,
+      #section-{{ section.id }} .box__image-text a.site-box-content {
+        color: {{ section.settings.color_text }};
+      }
+      #section-{{ section.id }} .box__image-text .title.add-hr:after {
+        background: {{ section.settings.color_text }};
+      }
+      #section-{{ section.id }} .box__image-text a.button {
+        background: {{ section.settings.color_text }};
+        color: {{ color_text_foreground }} !important;
+      }
+      #section-{{ section.id }} .box__image-text a.button:hover {
+        color: {{ color_accent_foreground }} !important;
+      }
+    {%- endstyle -%}
+
+  {%- endif -%}
+
+  {%- if section.settings.color_bg != 'rgba(0,0,0,0)' -%}
+    {%- style -%}
+      #section-{{ section.id }} .site-box-background.with-image:after {
+        background: {{ section.settings.color_bg }};
+      }
+    {%- endstyle -%}
+  {%- endif -%}
+
+</div>
+
+{% schema %}
+  {
+    "name": "Collection list",
+    "class": "index-section mount-images mount-collectionlist",
+    "max_blocks": 4,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Collections"
+      },
+      {
+        "type": "select",
+        "id": "txt_align",
+        "label": "Text alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "center"
+      },
+      {
+        "type": "header",
+        "content": "Colors"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Custom text color",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "color_bg",
+        "label": "Background overlay",
+        "default": "rgba(0,0,0,0)"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+		      {
+		        "type": "collection",
+		        "id": "collection",
+		        "label": "Collection"
+		      },
+          {
+            "type": "image_picker",
+            "id": "collection_image",
+            "label": "Image",
+            "info": "If the collection doesn't have a featured image."
+          }
+        ]
+      }
+    ], 
+    "presets": [{
+      "name": "Collection list",
+      "category": "Collection",
+      "blocks": [{
+        "type": "collection"
+      },{
+        "type": "collection"
+      },{
+        "type": "collection"
+      }]
+    }]
+  }
+{% endschema %}

@@ -1,0 +1,56 @@
+{% comment %}
+  We are using static CSS variables in order to make sure that we have a responsive header
+    which works well with the VH units that our theme is using.
+  So if you wish to modify the desk/mobile padding for the header, the values are below ( 20 / 14 ) 
+  The same for the maximum height of the logo, currently set at ( 80 / 40 ).
+{% endcomment %}
+{%- liquid 
+  assign deskPadding = 20
+  assign mobilePadding = 14
+  if logo 
+    assign maxDeskHeight = logo_height
+    assign maxMobileHeight = logo_height
+    if maxDeskHeight > logo.height
+      assign maxDeskHeight = logo.height
+    endif
+    if maxMobileHeight > logo.height
+      assign maxMobileHeight = logo.height
+    endif
+    if maxMobileHeight > 45 or maxMobileHeight < 45
+      assign maxMobileHeight = 45
+    endif
+    if maxDeskHeight < 45
+      assign maxDeskHeight = 45
+    endif
+  else
+    assign maxDeskHeight = 45
+    assign maxMobileHeight = 45
+  endif
+-%}
+<div id="header-size-settings" data-max_desk_height="{{ maxDeskHeight }}" data-max_mobile_height="{{ maxMobileHeight }}"></div>
+<script type="text/javascript">
+  window.debounce=function(b,f,c){var a;return function(){var d=this,e=arguments,g=c&&!a;clearTimeout(a);a=setTimeout(function(){a=null;c||b.apply(d,e)},f);g&&b.apply(d,e)}};
+  const fixVhByVars = function(){
+    const maxDeskHeight = parseInt( document.getElementById('header-size-settings').dataset.max_desk_height ),
+          maxMobileHeight = parseInt( document.getElementById('header-size-settings').dataset.max_mobile_height );
+    if ( window.innerWidth < 480 ) {
+      document.documentElement.style.setProperty('--header-padding', '{{ mobilePadding }}px');
+      document.documentElement.style.setProperty('--header-logo', maxMobileHeight + 'px');
+      document.documentElement.style.setProperty('--header-size', parseInt( maxMobileHeight + ( {{ mobilePadding }} * 2 ) ) + 'px');
+      document.documentElement.style.setProperty('--window-height', parseInt( 1 + document.documentElement.clientHeight - maxMobileHeight - ( {{ mobilePadding }} * 2 ) ) + 'px');
+    } else {
+      document.documentElement.style.setProperty('--header-padding', '{{ deskPadding }}px');
+      document.documentElement.style.setProperty('--header-logo', maxDeskHeight + 'px');
+      document.documentElement.style.setProperty('--header-size', parseInt( maxDeskHeight + ( {{ deskPadding }} * 2 ) ) + 'px');
+      document.documentElement.style.setProperty('--window-height', parseInt( 1 + document.documentElement.clientHeight - maxDeskHeight - ( {{ deskPadding }} * 2 ) ) + 'px');
+    }
+  } 
+  window.addEventListener('resize', window.debounce(fixVhByVars, 200));
+  window.addEventListener('DOMContentLoaded', fixVhByVars);
+  fixVhByVars();
+  document.addEventListener('shopify:section:load', function(e){
+    if ( e.target.id == 'shopify-section-header' ) {
+      fixVhByVars();
+    }
+  });
+</script>

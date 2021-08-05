@@ -1,0 +1,125 @@
+<div class="product-carousel__item" data-product-available="{{ product.available }}">
+
+  {%- if product != empty -%}
+
+    {%- if product.featured_media.aspect_ratio -%}
+      {%- assign aspect_ratio = product.featured_media.aspect_ratio -%}
+    {%- else -%}
+      {%- assign aspect_ratio = 1 -%}
+    {%- endif -%}
+
+    <div class="box--product-image product-carousel__item-image"
+      data-ratio="{{ aspect_ratio }}" style="padding-top: {{ 100 | divided_by: aspect_ratio }}%" >
+      
+      <img
+        src="{{ product.featured_media | img_url: '960x' }}" alt="{{ product.featured_media.alt | escape }}"
+        srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+        data-srcset="{{ product.featured_media | img_url: '480x' }} 360w, {{ product.featured_media | img_url: '600x' }} 480w, {{ product.featured_media | img_url: '1100x' }} 960w, {{ product.featured_media | img_url: '1600x' }} 1440w, {{ product.featured_media | img_url: '2100x' }} 1920w"
+        data-sizes="auto"
+        class="lazyload"
+      />
+
+    {%- if settings.show_preloader -%}
+      <span class="lazy-preloader"></span>
+    {%- endif -%}
+
+      <noscript><span class="ll-fallback" style="background-image:url({{ product.featured_media | img_url: '960x' }})"></span></noscript> 
+
+    </div>
+
+    <div class="product-carousel__item-caption">
+
+      <div>
+        <h4><span class="overflowed"><a href="{{ product.url }}">{{ product.title }}</a></span></h4>
+        <span class="price"><span class="overflowed">
+
+          {% capture price -%} {{ product.price | money }} {%- endcapture %}
+            
+          {%- if product.price_varies -%} 
+
+            {%- if product.compare_at_price > product.price -%}
+              {{ 'product.on_sale_from_html' | t: price: price }}
+            {%- else -%}
+              {{ 'product.from_text_html' | t: price: price }} 
+            {%- endif -%}
+
+          {%- else -%}
+          
+            {%- if product.compare_at_price > product.price -%}
+              {{ price }} <del>{{ product.compare_at_price | money }}</del>
+            {% else %}
+              {{ price }}
+            {%- endif -%}
+            
+          {%- endif -%}
+    
+          {%- if product.selected_or_first_available_variant.unit_price_measurement -%}
+            <span class="unit-price">
+              {{ product.selected_or_first_available_variant.unit_price | money }} / 
+              {%- if product.selected_or_first_available_variant.unit_price_measurement.reference_value != 1 -%}
+                {{ product.selected_or_first_available_variant.unit_price_measurement.reference_value }}
+              {%- endif -%}
+              {{ product.selected_or_first_available_variant.unit_price_measurement.reference_unit }}
+            </span>
+          {% endif %}
+
+        </span></span>
+      </div>
+
+      <div id="add-to-cart-{{ id }}" class="product--add-to-cart-form style--classic" data-type="{{ settings.cart_action }}">
+
+        {% form 'product', product %}
+
+          <select class="productSelect" name="id" style="display: none;">
+            {%- for variant in product.variants -%}
+              <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">
+                {{ variant.title | escape }}
+              </option>
+            {%- endfor -%}
+          </select>
+
+          <div class="product-variants-holder" style="display:none;">
+            {%- for option in product.options_with_values -%}
+              <div class="product-variant selector-wrapper hidden">
+                <label class="product-variant-holder__label" for="product-{{ option.name | downcase | strip }}">{{ option.name }}</label>
+                <select class="product-variants" id="product-{{ option.name | downcase | strip }}">
+                  {%- for value in option.values -%}
+                    <option value="{{ value | escape }}" {% if option.selected_value == value %}selected{% endif %}>{{ value | escape }}</option>
+                  {%- endfor -%}
+                </select>
+              </div>
+            {%- endfor -%}
+          </div>
+
+          <button type="submit" name="add" class="button color" aria-label="{{ 'product.add_to_cart' | t }}">
+            {%- render 'theme-symbols', icon: 'cart_icon_plus' -%}
+            <span class="preloader"></span>
+            <span style="display: none !important;" class="add-to-cart-text"></span>
+          </button>
+
+        {% endform %}
+
+      </div>
+
+      <script type="application/json" id="ProductJson-{{ id }}" class="product-json">
+        {{ product | json }}
+      </script>
+
+    </div>
+      
+  {%- else -%}
+
+   <div class="box--product-image product-carousel__item-image" data-ratio="1" style="padding-top: 100%">
+      <span class="onboarding-svg" style="top: 0">{{ 'product-1' | placeholder_svg_tag }}</span>
+    </div>
+
+    <div class="product-carousel__item-caption">
+      <div>
+        <h4><span class="overflowed"><a>Product Title</a></span></h4>
+        <span class="price"><span class="overflowed">{{ 1999 | money }} <del>{{ 2999 | money }}</del></span></span>
+      </div>
+    </div>
+
+  {%- endif -%}
+
+</div>

@@ -1,0 +1,106 @@
+{%- section 'collection' -%}
+{%- section 'collection-footer' -%}
+{%- section 'banner-collection' -%}
+
+<script type="text/javascript">
+
+  // Filters
+
+  window.CuberCollectionFilter = {
+    'pathname': document.location.pathname + document.location.search,
+    'sort': ''
+  }
+
+  document.addEventListener('shopify:section:select', function(e){
+    var $section = $(e.target);
+    if ( $section.hasClass('collection-page') ) {
+      initFilters();
+    }
+  });
+
+  window.CuberInitFilters = function() {
+    var $filters = $('.filter-by');
+    $filters.on('change', function() {
+      var newTags = [];
+      $filters.each(function() { 
+        if ($(this).val()) {
+          newTags.push($(this).val());
+        }
+      });
+      if (newTags.length) {
+        var query = newTags.join('+');
+        window.CuberCollectionFilter['pathname'] = $('{{ 'tag' | link_to_tag: 'tag' }}').attr('href').replace('/tag', '/' + query);
+      } else {
+        {%- if collection.handle -%}
+          window.CuberCollectionFilter['pathname'] = '{{ routes.collections_url }}/{{ collection.handle }}';
+        {%- elsif collection.products.first.type == collection.title -%}
+          window.CuberCollectionFilter['pathname'] = '{{ collection.title | url_for_type }}';
+        {%- elsif collection.products.first.vendor == collection.title -%}
+          window.CuberCollectionFilter['pathname'] = '{{ collection.title | url_for_vendor }}';
+        {%- endif -%}
+      }
+    });
+  }
+
+  document.addEventListener('shopify:section:select', function(e){
+    var $section = $(e.target);
+    if ( $section.hasClass('collection-page') ) {
+      window.CuberInitSort();
+    }
+  });
+
+  // Sorting
+
+  window.CuberInitSort = function() {
+    Shopify.queryParams = {};
+      if (location.search.length) {
+        for (var aKeyValue, i = 0, aCouples = location.search.substr(1).split('&'); i < aCouples.length; i++) {
+          aKeyValue = aCouples[i].split('=');
+          if (aKeyValue.length > 1) {
+            Shopify.queryParams[decodeURIComponent(aKeyValue[0])] = decodeURIComponent(aKeyValue[1]);
+          }
+      }
+    }
+    $('#sort-by')
+      .val('{{ collection.sort_by | default: collection.default_sort_by }}')
+      .on('change', function() {
+        window.CuberCollectionFilter['sort'] = $(this).val();
+      }
+    );
+    if ( $('#sort-by').hasClass('styled') ) {
+      $('#sort-by').parent().find('.regular-select-inner').html($('#sort-by')[0].options[$('#sort-by')[0].selectedIndex].text);
+    }
+  }
+
+  // Apply sorting
+  
+  window.CuberInitFilterSortApply = function() {
+    $('#apply-sort-filter').on('click', function(){
+      if ( window.CuberCollectionFilter['sort'] != '' ) {
+        if ( window.CuberCollectionFilter['pathname'].indexOf('sort_by') >= 0 ) {
+          window.CuberCollectionFilter['pathname'] = window.CuberCollectionFilter['pathname'].replace(/sort_by=.+/g, 'sort_by=' + window.CuberCollectionFilter['sort']);
+        } else {
+          window.CuberCollectionFilter['pathname'] = window.CuberCollectionFilter['pathname'] + ( window.CuberCollectionFilter['pathname'].indexOf('?') >= 0 ? '&' : '?' ) + 'sort_by=' + window.CuberCollectionFilter['sort'];
+        }
+      } else {
+        // empty
+      }
+      document.location.href =  window.CuberCollectionFilter['pathname'];
+    });
+    $('#clear-sort-filter').on('click', function(){
+      document.location.href = document.location.origin + '{{ routes.collections_url }}/' + $('#section-collection').data('handle');
+    });
+  }
+
+  window.addEventListener('resize', function(){
+    collectionResizeQuirk();
+  });
+  function collectionResizeQuirk() {
+    if ( window.innerHeight % 2 == 0 ) {
+      document.querySelector('body').classList.remove('odd-screen-height');
+    } else {
+      document.querySelector('body').classList.add('odd-screen-height');
+    }
+  }
+
+</script>

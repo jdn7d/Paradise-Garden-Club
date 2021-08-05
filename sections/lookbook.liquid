@@ -1,0 +1,259 @@
+<div id="section-{{ section.id }}" class="site-box-container container--fullscreen">
+
+  <div class="site-box box--bigger lap--box--small-fl box--typo-big box--center-align box--column-flow box__heading box__heading--description box--add-hr box--special" data-order="0">
+
+    <div class="site-box-content">
+          
+      <h1 class="title">{{ page.title }}</h1>
+
+      {%- unless section.settings.content == blank -%}
+        <div class="rte"><div>{{ section.settings.content }}</div></div>
+      {%- endunless -%}
+
+    </div>
+
+  </div>
+
+  <div id="section-{{ section.id }}" class="site-box-container container--fullscreen">
+
+    {%- assign index_at_loop = 0 -%}
+    {%- assign page_at_loop = 1 -%}
+    {%- assign size_at_loop = section.blocks.size | at_most: 4 -%}
+    {%- assign full_loop = section.blocks.size | divided_by: 4 | floor | plus: 1 -%}
+    {%- assign half_loop = section.blocks.size | modulo: 4 -%}
+
+    {%- for block in section.blocks -%}
+
+      {%- assign index_at_loop = index_at_loop | plus: 1 -%}
+    
+      {%- assign data = 'data-lookbook data-src="#block-' | append: block.id | append: '"' -%}
+
+      {%- if size_at_loop == 1 -%}
+        {%- assign size_class = 'box--bigger lap--box--small-fl' -%}
+      {%- elsif size_at_loop == 2 and index_at_loop < 3 -%}
+        {% assign size_class = 'box--big lap--box--small-fl palm--box--small-fl' %}
+      {%- elsif size_at_loop == 3 -%}
+        {%- if index_at_loop == 1 -%}
+          {%- assign size_class = 'box--big lap--box--small-lg palm--box--small-fl' -%}
+        {%- elsif index_at_loop == 2 -%}
+          {%- assign size_class = 'box--small-lg  palm--box--small-fl' -%}
+        {%- elsif index_at_loop == 3 -%}
+          {%- assign size_class = 'box--small-lg palm--box--small-fl' -%}
+        {%- endif -%}
+      {%- elsif size_at_loop == 4 -%}
+        {%- assign size_class = 'box--small-lg palm--box--small-fl' -%}
+      {%- endif -%}
+
+      <div class="site-box box--center-align box--column-flow {{ size_class }} box__image-text box__gallery button-false" {{ block.shopify_attributes }} {{ data }}>
+
+        <div class="site-box-background">
+          {%- unless block.settings.image == blank -%}
+            <img
+              src="{{ block.settings.image | img_url: '960x' }}" alt="{{ block.settings.image.alt | escape }}"
+              srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+              data-srcset="{{ block.value | img_url: '480x' }} 360w, {{ block.settings.image | img_url: '600x' }} 480w, {{ block.settings.image | img_url: '1100x' }} 960w, {{ block.settings.image | img_url: '1600x' }} 1440w, {{ block.settings.image | img_url: '2100x' }} 1920w"
+              data-sizes="auto"
+              class="lazyload"
+              style="object-position: {{ block.settings.alignment }}"
+            />
+            {%- if settings.show_preloader -%}
+              <span class="lazy-preloader"></span>
+            {%- endif -%}
+            <noscript><span class="ll-fallback" style="background-image:url({{ block.settings.image | img_url: '960x' }})"></span></noscript> 
+
+          {%- else -%}
+            <span class="onboarding-svg">{{ 'image' | placeholder_svg_tag }}</span>
+          {%- endunless -%}
+        </div>
+
+        <span class="icon">{%- render 'theme-symbols', icon: 'eye' -%}</span>
+
+      </div>
+
+      {%- if index_at_loop == 4 -%}
+        {%- assign index_at_loop = 0 -%}
+        {%- assign page_at_loop = page_at_loop | plus: 1 -%}
+        {%- if page_at_loop == full_loop -%}
+          {%- assign size_at_loop = half_loop -%}
+        {%- endif -%}
+        <span class="clearfix"></span>
+      {%- endif -%}
+
+    {%- endfor -%}
+
+  </div>
+
+</div>
+
+{%- for block in section.blocks -%}
+
+  <div class="lookbook-holder hide" id="block-{{ block.id }}">
+
+    <div class="lookbook-content">
+
+      <div class="site-box box--big lap--box--small-fl box__heading active">
+        <div class="site-box-background">
+          {%- unless block.settings.image == blank -%}
+            <img
+              src="{{ block.settings.image | img_url: '960x' }}" alt="{{ block.settings.image.alt | escape }}"
+              srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+              data-srcset="{{ block.settings.image | img_url: '600x' }} 480w, {{ block.settings.image | img_url: '860x' }} 720w, {{ block.settings.image | img_url: '1100x' }} 960w, {{ block.settings.image | img_url: '1600x' }} 1440w, {{ block.settings.image | img_url: '2100x' }} 1920w"
+              data-sizes="auto"
+              class="lazyload" 
+            />
+            {%- if settings.show_preloader -%}
+              <span class="lazy-preloader"></span>
+            {%- endif -%}
+            <noscript><span class="ll-fallback" style="background-image:url({{ block.settings.image | img_url: '960x' }})"></span></noscript> 
+          {%- else -%}
+            <span class="onboarding-svg">{{ 'image' | placeholder_svg_tag }}</span>
+          {%- endunless -%}
+        </div>
+      </div>
+
+      <div class="site-box box--big lap--box--bigger box__shop-the-look box--center-align box--column-flow" data-order="1">
+        <div class="site-box-content">
+
+          <h3 class="title">{{ section.settings.popup_title | escape }}</h3>
+
+          {%- assign size = 0 -%}
+          {%- capture shop_the_look_content -%}
+
+            {%- if block.settings.product_one != blank -%}
+              {%- assign id = block.id | append: '1' -%}
+              {%- assign size = size | plus: 1 -%}
+              {%- render 'shop-the-look-content', product: all_products[block.settings.product_one], id: id -%}
+            {%- endif -%}
+
+            {%- if block.settings.product_two != blank -%}
+              {%- assign id = block.id | append: '1' -%}
+              {%- assign size = size | plus: 1 -%}
+              {%- render 'shop-the-look-content', product: all_products[block.settings.product_two], id: id -%}
+            {%- endif -%}
+
+            {%- if block.settings.product_three != blank -%}
+              {%- assign id = block.id | append: '1' -%}
+              {%- assign size = size | plus: 1 -%}
+              {%- render 'shop-the-look-content', product: all_products[block.settings.product_three], id: id -%}
+            {%- endif -%}
+
+            {%- if block.settings.product_four != blank -%}
+              {%- assign id = block.id | append: '1' -%}
+              {%- assign size = size | plus: 1 -%}
+              {%- render 'shop-the-look-content', product: all_products[block.settings.product_four], id: id -%}
+            {%- endif -%}
+
+          {%- endcapture -%}
+
+          <div class="product-carousel" data-size="{{ size }}" data-id="{{ block.id }}">{{ shop_the_look_content }}</div>
+
+        </div>
+
+      </div>
+
+      <button title="Close popup" type="button" class="lookbook-close"><svg version="1.1" class="svg close" xmlns="//www.w3.org  /2000/svg" xmlns:xlink="//www.w3.org  /1999/xlink" x="0px" y="0px" width="45px" height="45px" viewBox="0 0 60 60" enable-background="new 0 0 60 60" xml:space="preserve"><polygon points="38.936,23.561 36.814,21.439 30.562,27.691 24.311,21.439 22.189,23.561 28.441,29.812   22.189,36.064 24.311,38.186 30.562,31.934 36.814,38.186 38.936,36.064 32.684,29.812 "></polygon></svg></button>
+
+    </div>
+
+    <div class="lookbook-overlay"></div>
+
+  </div>
+  
+{%- endfor -%}
+
+{% schema %}
+{
+  "name": "Lookbook",
+  "class": "index-section mount-lookbook mount-images mount-shop-the-look",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "popup_title",
+      "label": "Popup title",
+      "default": "Shop the look"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Image",
+      "type": "image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "id": "alignment",
+          "type": "select",
+          "options": [
+            {
+              "value": "0% 0%",
+              "label": "Left top"
+            },
+            {
+              "value": "50% 0%",
+              "label": "Center top"
+            },
+            {
+              "value": "100% 0%",
+              "label": "Right top"
+            },
+            {
+              "value": "0% 50%",
+              "label": "Left middle"
+            },
+            {
+              "value": "50% 50%",
+              "label": "Center middle"
+            },
+            {
+              "value": "100% 50%",
+              "label": "Right middle"
+            },
+            {
+              "value": "0% 100%",
+              "label": "Left bottom"
+            },
+            {
+              "value": "50% 100%",
+              "label": "Center bottom"
+            },
+            {
+              "value": "100% 100%",
+              "label": "Right bottom"
+            }
+          ],
+          "default": "50% 50%",
+          "label": "Image alignment"
+        },
+        {
+          "id": "product_one",
+          "type": "product",
+          "label": "First product"
+        },
+        {
+          "id": "product_two",
+          "type": "product",
+          "label": "Second product"
+        },
+        {
+          "id": "product_three",
+          "type": "product",
+          "label": "Third product"
+        },
+        {
+          "id": "product_four",
+          "type": "product",
+          "label": "Fourth product"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

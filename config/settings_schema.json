@@ -1,0 +1,287 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Split",
+    "theme_author": "KrownThemes",
+    "theme_version": "2.8.3",
+    "theme_documentation_url": "https:\/\/shopify-support.krownthemes.com\/",
+    "theme_support_url": "https:\/\/krownthemes.com\/shopify-support-contact\/"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Background",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text",
+        "default": "#252a2b"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent",
+        "default": "#5929FF",
+        "info": "Used on most roll over effects"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "header",
+        "content": "General"
+      },
+      {
+        "type": "font_picker",
+        "id": "headings_font",
+        "label": "Headings",
+        "default": "montserrat_n7"
+      },
+      {
+        "type": "font_picker",
+        "id": "menus_font",
+        "label": "Logo and menus",
+        "default": "montserrat_n5"
+      },
+      {
+        "type": "font_picker",
+        "id": "body_font",
+        "label": "Body",
+        "default": "work_sans_n5"
+      }
+    ]
+  },
+  {
+    "name": "Product grid",
+    "settings": [
+      {
+        "type": "select",
+        "id": "product_animation",
+        "label": "Desktop animation style",
+        "options": [
+          {
+            "value": "one regular color--light",
+            "label": "Popup"
+          },
+          {
+            "value": "one alt color--light",
+            "label": "Static"
+          },
+          {
+            "value": "three regular color--light",
+            "label": "Overlay"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "product_show_secondary",
+        "label": "Show second product media on hover"
+      },
+      {
+        "type": "select",
+        "id": "thumb_resize",
+        "label": "Product media aspect",
+        "options": [
+          {
+            "value": "fill",
+            "label": "Cropped"
+          },
+          {
+            "value": "fit",
+            "label": "Natural"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Product reviews",
+        "info": "You need to install [Shopify's free Product Reviews app](https:\/\/apps.shopify.com\/product-reviews) before enabling this option."
+      },
+      {
+        "type": "checkbox",
+        "id": "show_reviews_badge",
+        "label": "Show reviews badge",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon image",
+        "info": "32 x 32px .png required"
+      }
+    ]
+  },
+  {
+    "name": "Cart page",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_action",
+        "label": "Cart type",
+        "options": [
+          {
+            "value": "overlay",
+            "label": "Drawer"
+          },
+          {
+            "value": "no-overlay",
+            "label": "Page"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_additional_buttons",
+        "label": "Show additional checkout buttons"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_notes_enable",
+        "label": "Enable cart notes"
+      }
+    ]
+  },
+  {
+    "name": "Embellishments",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_preloader",
+        "label": "Media preloader",
+        "default": true,
+        "info": "Shows a small circular preloader while media on your store are still loading."
+      }
+    ]
+  },
+  {
+    "name": "Search",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "predictive_search_enabled",
+        "label": "Enable predictive search",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "predictive_search_show_vendor",
+        "label": "Show vendor",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "predictive_search_show_price",
+        "label": "Show price",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "predictive_search_include_articles",
+        "label": "Include articles in search results",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "predictive_search_include_pages",
+        "label": "Include pages in search results",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_twitter",
+        "label": "Twitter",
+        "info": "https:\/\/twitter.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook",
+        "label": "Facebook",
+        "info": "https:\/\/www.facebook.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_google",
+        "label": "Google+",
+        "info": "https:\/\/plus.google.com\/+shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube",
+        "label": "YouTube",
+        "info": "https:\/\/www.youtube.com\/user\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_vimeo",
+        "label": "Vimeo",
+        "info": "https:\/\/vimeo.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest",
+        "label": "Pinterest",
+        "info": "https:\/\/www.pinterest.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_tumblr",
+        "label": "Tumblr",
+        "info": "http:\/\/shopify.tumblr.com"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram",
+        "label": "Instagram",
+        "info": "https:\/\/instagram.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok",
+        "label": "TikTok",
+        "info": "https:\/\/www.tiktok.com\/@shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_linkedin",
+        "label": "LinkedIn",
+        "info": "https:\/\/www.linkedin.com\/company\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_reddit",
+        "label": "Reddit",
+        "info": "https:\/\/www.reddit.com\/user\/shopify\/"
+      },
+      {
+        "type": "text",
+        "id": "social_flickr",
+        "label": "Flickr",
+        "info": "https:\/\/www.flickr.com\/photos\/shopify\/"
+      },
+      {
+        "type": "text",
+        "id": "social_email",
+        "label": "Email",
+        "info": "mailto:contact@shopify.com"
+      }
+    ]
+  }
+]

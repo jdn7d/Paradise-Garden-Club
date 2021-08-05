@@ -1,0 +1,147 @@
+<form action="{{ routes.cart_url }}" method="post" novalidate class="cart" id="site-cart-form-{{ type }}">
+
+  <div class="cart-holder" data-items="{{ cart.items.size }}">
+
+    <div class="cart-items">
+
+      {%- for item in cart.items -%}
+
+        <div class="cart-item" data-title="{{ item.product.title | escape }} {%- unless item.product.has_only_default_variant -%} ({{ item.variant.title | escape }}) {%- endunless -%}" data-id="{{ item.key }}" data-variant="{{ item.variant.id }}" data-qty="{{ item.quantity }}">
+
+          <a href="{{ item.url | within: collections.all }}" class="thumbnail">
+            <img 
+              src="{{ item.image | img_url: '120x120', crop: 'center' }}" alt="{{ item.title | escape }}"
+              srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+              data-srcset="{{ item.image | img_url: '120x120', crop: 'center' }} 120w, {{ item.image | img_url: '240x240', crop: 'center' }} 240w"
+              data-sizes="auto" class="lazyload"
+            />
+          </a>
+
+          <div class="content">
+
+            <a href="{{ item.url }}" class="title">
+              {{ item.product.title | escape }}
+              {%- unless item.product.has_only_default_variant -%}
+                <span style="display: inline-block">({{ item.variant.title | escape }})</span>
+              {%- endunless -%}
+            </a>
+
+            {%- if item.selling_plan_allocation -%}
+              <span style="display: block; font-size: 90%;">
+                {{ item.selling_plan_allocation.selling_plan.name }} 
+              </span>
+            {%- endif -%}
+        
+            <div class="price">
+
+              {%- if item.final_line_price < item.original_line_price -%}
+                <strong>{{ item.final_line_price | money }}</strong>
+                <del>{{ item.original_line_price | money }}</del>
+              {%- elsif item.variant.compare_at_price > item.variant.price -%}
+                <strong>{{ item.final_line_price | money }}</strong>
+                <del>{{ item.variant.compare_at_price | times: item.quantity | money }}</del>
+              {%- else -%}
+                <strong>{{ item.final_line_price | money }}</strong>
+              {%- endif -%}
+
+              {%- if item.quantity > 1 and type == 'page' -%}
+                <div>
+                  <span>({{ item.quantity }} x {{ item.final_price | money }})</span>
+                </div>
+              {%- endif -%}
+
+              {%- if item.unit_price_measurement -%}
+                <span class="unit-price">
+                  {{ item.unit_price | money }} / 
+                  {%- if item.unit_price_measurement.reference_value != 1 -%}
+                    {{ item.unit_price_measurement.reference_value }}
+                  {%- endif -%}
+                  {{ item.unit_price_measurement.reference_unit }}
+                </span>
+              {%- endif -%}
+
+            </div>
+
+             {%- if item.line_level_discount_allocations.size > 0 -%}
+              {%- for discount_allocation in item.line_level_discount_allocations -%}
+                <small class="discount">{{ 'cart.discount' | t }} <span style="display: inline-block">{{ discount_allocation.discount_application.title }} <span style="display: inline-block">(-{{ discount_allocation.amount | money }})</span></span></small>
+              {% endfor %}
+            {%- endif -%}
+
+            {%- assign property_size = item.properties | size -%}
+            {%- if property_size > 0 -%}
+              {%- for p in item.properties -%}
+                {%- unless p.last == blank -%}
+                  {{ p.first }}:
+                  {%- if p.last contains '/uploads/' -%}
+                    <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                  {% else %}
+                    {{ p.last }}
+                  {%- endif -%}
+                {%- endunless -%}
+              {%- endfor -%}
+            {%- endif -%}
+
+          </div>
+
+          <div class="actions">
+            <input data-href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity=$qty" class="qty" type="number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" min="0" aria-label="{{ 'product.quantity' | t }}">
+            <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity=0" class="remove" title="{{ 'cart.remove_item' | t }}" aria-label="{{ 'cart.remove_item' | t }}"><span aria-hidden="true">{% render 'theme-symbols', icon: 'close_icon' %}</span></a>
+          </div>
+
+        </div>
+
+      {%- endfor -%}
+
+    </div>
+
+    {%- if settings.cart_notes_enable -%}
+      <textarea name="note" id="cartSpecialInstructions" placeholder="{{ 'cart.note' | t }}" aria-label="{{ 'cart.note' | t }}">{{ cart.note }}</textarea>
+    {%- endif -%}
+
+    <div class="cart-out">
+
+      <div id="CartDetails">
+        
+        {%- if cart.cart_level_discount_applications != blank -%} 
+          <div>
+            <p id="CartSubTotal">{{ 'cart.subtotal' | t }} <span>{{ cart.items_subtotal_price | money }}</span></p>
+            <p id="CartDiscounts">
+              {{ 'cart.discounts' | t }}
+              {%- for discount_application in cart.cart_level_discount_applications -%}
+                <span style="display: inline-block">{{ discount_application.title }} <span style="display: inline-block">( -{{ discount_application.total_allocated_amount | money }} )</span></span>
+              {%- endfor -%}
+            </p>
+          </div>
+        {%- endif -%}
+
+      </div>
+
+      <p id="CartTotal">{{ 'cart.total' | t }} <span>{{ cart.total_price | money }}</span></p>
+      <small>{{ 'cart.shipping_at_checkout' | t }}</small>
+
+      <div class="cart-actions" style="margin-top: 20px;">
+        
+        {%- if type == 'sidebar' -%}
+          <button class="button accent" style="margin-right: 10px;">{{ 'sidebar.cart.view_cart' | t }}</button>
+        {%- endif -%}
+    
+        <input type="submit" name="checkout" value="{{ 'cart.checkout' | t }}" {% if additional_checkout_buttons and settings.cart_additional_buttons and type == 'page' %} class="wide-button" {% endif %}>
+      
+        {%- if additional_checkout_buttons and settings.cart_additional_buttons -%}
+          <div class="additional-checkout-buttons additional-checkout-buttons--vertical">{{ content_for_additional_checkout_buttons }}</div>
+        {%- endif -%}
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="cart-continue">
+    <a href="{{ routes.all_products_collection_url }}" class="button color">
+      {{ 'cart.continue_browsing' | t }}
+    </a>
+  </div>
+
+</form>
