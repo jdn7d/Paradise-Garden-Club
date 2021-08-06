@@ -10758,3 +10758,45 @@ li.has-submenu:hover>ul {
     }
 }
 
+/*
+-----Paradise Custom Styles-----
+*/
+:root {
+    --tan: #e7e5d8;
+    --dark-tan: #d9d6c2;
+    --coral: #e29a80;
+
+}
+
+.site-header {
+    background: var(--tan);
+}
+
+.site-box {
+    background: var(--tan);
+}
+
+.site-box.box__announcement {
+    border-top: 3px solid black;
+}
+
+.site-box.box__announcement .title {
+    color: var(--coral);
+    text-transform: uppercase;
+}
+
+
+
+
+@font-face {
+    font-family: "PMGrotesk";
+    src: url("PMGrotesk-Regular-1.woff2") format("woff2"),
+    url("PMGrotesk-Regular-1.woff") format("woff");
+    }
+
+<p>
+    <span style="font-weight: 400;">yourcssselectorhere { font-family: "NAME OF FONT"!important; }
+    </span>
+</p> 
+
+
