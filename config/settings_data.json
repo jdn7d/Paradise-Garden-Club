@@ -150,8 +150,7 @@
           "bar_show_dismiss": true,
           "bar_content": "Use this bar for a short, important announcement.",
           "bar_link": "",
-          "bar_bgcolor": "#1c1c1c",
-          "bar_txtcolor": "#d2d2d2"
+          "bar_bgcolor": "#1c1c1c"
         }
       },
       "ad59ef041715": {
@@ -659,8 +658,7 @@
             "bar_enable": true,
             "bar_content": "Use this bar for a short, important announcement.",
             "bar_link": "",
-            "bar_bgcolor": "#1c1c1c",
-            "bar_txtcolor": "#d2d2d2"
+            "bar_bgcolor": "#1c1c1c"
           }
         },
         "ad59ef041715": {
@@ -1147,8 +1145,7 @@
             "bar_enable": true,
             "bar_content": "Use this bar for a short, important announcement.",
             "bar_link": "",
-            "bar_bgcolor": "#1c1c1c",
-            "bar_txtcolor": "#d2d2d2"
+            "bar_bgcolor": "#1c1c1c"
           }
         },
         "footer": {
