@@ -10768,6 +10768,11 @@ li.has-submenu:hover>ul {
 
 }
 
+.site-header .box__banner {
+    background: var(--coral) !important;
+    color: black !important;
+}
+
 .site-header {
     background: var(--tan);
 }
