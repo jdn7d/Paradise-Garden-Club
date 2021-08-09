@@ -1,3 +1,4 @@
+{%comment%}
 {%- assign headings_font = settings.headings_font -%}
 {%- assign body_font = settings.body_font -%}
 {%- assign menus_font = settings.menus_font -%}
@@ -11,6 +12,7 @@
 {%- if menus_font != body_font and menus_font != headings_font -%}
   <link rel="preload" href="{{ menus_font | font_url }}" as="font" type="font/woff2" crossorigin>
 {%- endif -%}
+{%endcomment%}
 
 <style type="text/css">
 
@@ -35,37 +37,14 @@
   {%- assign color_background_third = settings.color_background | color_darken: 9 -%}
   {%- assign color_background_fourth = settings.color_background | color_darken: 3 -%}
 
+  
   /* Fonts */
+  
+  @font-face {
+    font-family: "PMGrotesk";
+    src: url('{{ "PMGrotesk-Bold.woff" | asset_url }}') format("woff");
+  }
 
-  {{ headings_font | font_face: font_display: 'swap' }}
-
-  {{ body_font | font_face: font_display: 'swap' }}
-
-  {%- assign body_font_bold = body_font | font_modify: 'weight', 'bolder' -%}
-  {%- assign body_font_italic = body_font | font_modify: 'style', 'italic' -%}
-  {%- assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic' -%}
-
-  {%- if body_font -%}
-    {{ body_font_bold | font_face: font_display: 'swap' }}
-  {%- endif -%}
-
-  {%- if body_font_italic -%}
-    {{ body_font_italic | font_face: font_display: 'swap' }}
-  {%- endif -%}
-
-  {%- if body_font_bold_italic -%}
-    {{ body_font_bold_italic | font_face: font_display: 'swap' }}
-  {%- endif -%}
-
-  {{ menus_font | font_face: font_display: 'swap' }}
-
-  {%- assign menus_font_bold = menus_font | font_modify: 'weight', '600' -%}
-  {%- if menus_font_bold -%}
-    {{ menus_font_bold | font_face: font_display: 'swap' }}
-  {%- else -%}
-    {%- assign menus_font_bold = menus_font | font_modify: 'weight', 'bolder' -%}
-    {{ menus_font_bold | font_face: font_display: 'swap' }}
-  {%- endif -%}
 
   :root {
 
@@ -88,27 +67,19 @@
 
     /* Font variables */
 
-    --font-stack-headings: {{ headings_font.family }}, {{ headings_font.fallback_families }};
-    --font-weight-headings: {{ headings_font.weight }};
-    --font-style-headings: {{ headings_font.style }};
+    --font-stack-headings: "PMGrotesk", {{ headings_font.fallback_families }};
+    --font-weight-headings: 400;
+    --font-style-headings: normal;
 
-    --font-stack-body: {{ body_font.family }}, {{ body_font.fallback_families }};
-    --font-weight-body: {{ body_font.weight }};
-    {%- if body_font_bold -%}
-      --font-weight-body-bold: {{ body_font_bold.weight }}; 
-    {%- else -%}
-      --font-weight-body-bold: 700;
-    {%- endif -%}
-    --font-style-body: {{ body_font.style }};
+    --font-stack-body: "PMGrotesk", {{ body_font.fallback_families }};
+    --font-weight-body: 400;
+    --font-weight-body-bold: 700; 
+    --font-style-body: normal;
 
-    --font-stack-menu: {{ menus_font.family }}, {{ menus_font.fallback_families }};
-    --font-weight-menu: {{ menus_font.weight }};
-    {%- if menus_font_bold -%}
-      --font-weight-menu-bold: {{ menus_font_bold.weight }}; 
-    {%- else -%}
-      --font-weight-menu-bold: 600; 
-    {%- endif -%}
-    --font-style-menu: {{ menus_font.style }};
+    --font-stack-menu: "PMGrotesk", {{ menus_font.fallback_families }};
+    --font-weight-menu: 400;
+    --font-weight-menu-bold: 600; 
+    --font-style-menu: normal;
 
   }
 

@@ -10772,8 +10772,15 @@ li.has-submenu:hover>ul {
 
 /* Nav Bar */
 
-.site-nav ul {
+.site-nav.style--classic .menu-link {
+    font-size: 1rem;
     text-transform: uppercase;
+    line-height: 1;
+    color: #211d11;
+    letter-spacing: .1rem;
+    position: relative;
+    padding: 15px 20px;
+    z-index: 9;
 }
 
 .site-header .box__banner {
@@ -10817,13 +10824,10 @@ h2, h3 {
 
 @font-face {
     font-family: "PMGrotesk";
-    src: url("PMGrotesk-Regular-1.woff2") format("woff2"),
-    url("PMGrotesk-Regular-1.woff") format("woff");
-    }
+    src: url('{{ "PMGrotesk-Bold.woff" | asset_url }}') format("woff");
+}
 
-<p>
-    <span style="font-weight: 400;">yourcssselectorhere { font-family: "NAME OF FONT"!important; }
-    </span>
-</p> 
+
+
 
 
