@@ -10770,6 +10770,12 @@ li.has-submenu:hover>ul {
 
 }
 
+/* Nav Bar */
+
+.site-nav ul {
+    text-transform: uppercase;
+}
+
 .site-header .box__banner {
     background: var(--coral) !important;
     color: black !important;
@@ -10779,30 +10785,26 @@ li.has-submenu:hover>ul {
     background: var(--tan);
 }
 
-h2 {
+h2, h3 {
     text-transform: uppercase;
 }
 
 
 .site-box {
     background: var(--tan);
-}
-
-.site-box.box__announcement {
     border-top: 3px solid black;
-    border-bottom: 3px solid black !important;
+    
 }
 
+/* Homepage Collection boxes  */
 .site-box.box--small.lap--box--small-lg.box--typo-small.box--center-align.box--column-flow.box__heading {
     border-right: 3px solid black;
-    border-bottom: 3px solid black;   
+
 }
-
-
 
 .site-box.box--small.box--typo-small.lap--box--small-lg.box--center-align.box--no-padding.box--column-flow.box__collection {
     border-right: 3px solid black;
-    border-bottom: 3px solid black;
+  
 }
 
 .site-box.box__announcement .title {
