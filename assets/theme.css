@@ -10794,11 +10794,21 @@ li.has-submenu:hover>ul {
     background: var(--tan);
 }
 
-h2, h3 {
+h1, h2, h3, h4, h5, h6 {
+    font-family: "RTGravi-Soft" !important;
     text-transform: uppercase;
-  	font-family: "RTGravi-Soft" !important;
+    letter-spacing: .01em;
+    font-weight: 700;
+    line-height: 1;
 }
 
+p {
+    font-family: 'PMGrotesk-Regular' !important;
+}
+
+p.caption {
+    margin-bottom: 14px !important;
+}
 
 .site-box {
     background: var(--tan);
@@ -10819,6 +10829,7 @@ h2, h3 {
 
 .site-box.box__announcement .title {
     color: var(--coral);
+    font-family: var(--RTGravi);
     text-transform: uppercase;
 }
 
@@ -10859,7 +10870,7 @@ $font-style-header: normal ;
 
 $headingsFontBoldWeight: 700;
 
-/* Body (main) */
+/* Body (main) 
 
 {% assign body_font = settings.typography_body_new %}
 {{ body_font | font_face }}
@@ -10892,7 +10903,7 @@ $bodyFontBoldWeight: 700;
   font-style: $font-style-body;
 }
 
-/* Logo & menus */
+/* Logo & menus 
 
 {% assign menu_font = settings.typography_menus_new %}
 {{ menu_font | font_face }}
@@ -10922,7 +10933,7 @@ $menuFontBoldWeight: 700;
   font-style: $font-style-menu;
 }
 
-/* Special */
+/* Special 
 
 {{ settings.typography_quote_new | font_face }}
 
@@ -10938,6 +10949,7 @@ $quoteFontRegularStyle: {{ quote_font.style }};
   $quoteFontRegularStyle: normal;
 {% endif %}
 
+*/
 @mixin font-quote(){
   font-family: $font-stack-quote;
   font-weight: $font-weight-quote;
