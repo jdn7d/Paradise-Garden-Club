@@ -10816,6 +10816,14 @@ p.caption {
     
 }
 
+.site-box.box--big.box--center-align.box--column-flow.box__slideshow-item {
+    background: var(--tan) !important;
+}
+
+.site-box.box--big.lap--box--small-fl.box--typo-big.box--center-align.box--column-flow.box__heading {
+    background: var(--tan) !important;
+}
+
 /* Homepage Collection boxes  */
 .site-box.box--small.lap--box--small-lg.box--typo-small.box--center-align.box--column-flow.box__heading {
     border-right: 3px solid black;
