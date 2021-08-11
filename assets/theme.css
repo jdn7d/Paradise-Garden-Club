@@ -10767,13 +10767,15 @@ li.has-submenu:hover>ul {
     --tan: #e7e5d8;
     --dark-tan: #d9d6c2;
     --coral: #e29a80;
-
+    --PMGrotesk: "PMGrotesk";
+    --RTGravi: "RTGravi-Soft"
 }
 
 /* Nav Bar */
 
 .site-nav.style--classic .menu-link {
     font-size: 1rem;
+  	font-family: var(--PMGrotesk);
     text-transform: uppercase;
     line-height: 1;
     color: #211d11;
@@ -10794,6 +10796,7 @@ li.has-submenu:hover>ul {
 
 h2, h3 {
     text-transform: uppercase;
+  	font-family: "RTGravi-Soft" !important;
 }
 
 
@@ -10819,15 +10822,127 @@ h2, h3 {
     text-transform: uppercase;
 }
 
-
-
-
-@font-face {
-    font-family: "PMGrotesk";
-    src: url('{{ "PMGrotesk-Bold.woff" | asset_url }}') format("woff");
+.site-nav.style--classic .menu-link {
+ 	font-family: PMGrotesk-Regular !important; 
 }
 
+/*============================================================================
+  #Fonts
+==============================================================================*/ 
 
+/* Headings */
+
+@font-face {
+  font-family: "PMGrotesk-Regular";
+  src: url("PMGrotesk-Regular.woff") format("woff");
+  font-weight: 400;
+}
+      
+@font-face {
+  font-family: "RTGravi-Soft";
+  src: url("rtgravi-soft-webfont.woff") format("woff");
+  font-weight: 400;
+}
+
+      
+
+$font-stack-header: 'PMGrotesk';
+$font-weight-header: 700 ;
+$font-style-header: normal ;
+
+@mixin font-head(){
+  font-family: $font-stack-header;
+  font-weight: $font-weight-header;
+  font-style: $font-style-header;
+  text-transform: uppercase;
+}
+
+$headingsFontBoldWeight: 700;
+
+/* Body (main) */
+
+{% assign body_font = settings.typography_body_new %}
+{{ body_font | font_face }}
+
+$font-stack-body: 'PMGrotesk', {{ body_font.family }}, {{ body_font.fallback_families }};
+$font-weight-body: 400, {{ body_font.weight }};
+$font-style-body: normal, {{ body_font.style }};
+
+{%- assign body_font_bold = body_font | font_modify: 'weight', 'bolder' -%}
+{%- assign body_font_italic = body_font | font_modify: 'style', 'italic' -%}
+{%- assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic' -%}
+
+$bodyFontBoldWeight: 700;
+{%- if body_font_bold -%}
+  {{ body_font_bold | font_face }}
+  $bodyFontBoldWeight: 700; 
+{%- endif -%}
+
+{%- if body_font_italic -%}
+  {{ body_font_italic | font_face }}
+{% endif %}
+
+{%- if body_font_bold_italic -%}
+  {{ body_font_bold_italic | font_face }}
+{%- endif -%}
+
+@mixin font-body(){
+  font-family: $font-stack-body;
+  font-weight: $font-weight-body;
+  font-style: $font-style-body;
+}
+
+/* Logo & menus */
+
+{% assign menu_font = settings.typography_menus_new %}
+{{ menu_font | font_face }}
+
+$font-stack-menu: 'PMGrotesk', {{ menu_font.family }}, {{ menu_font.fallback_families }};
+$font-weight-menu: 500, {{ menu_font.weight }};
+$font-style-menu: normal, {{ menu_font.style }};
+
+$menuFontRegularWeight: 500, {{ menu_font.weight }};
+
+{% assign menu_font_bold = menu_font | font_modify: 'weight', '700' %}
+
+$menuFontBoldWeight: 700;
+{% if menu_font_bold %}
+  {{ menu_font_bold | font_face }}
+{% else -%}
+  {% assign menu_font_bold = menu_font | font_modify: 'weight', 'bolder' %}
+  {{ menu_font_bold | font_face }}
+{% endif %}
+{% if menu_font_bold %}
+  $menuFontBoldWeight: {{ menu_font_bold.weight }}; 
+{% endif %}
+
+@mixin font-menu(){
+  font-family: $font-stack-menu;
+  font-weight: $font-weight-menu;
+  font-style: $font-style-menu;
+}
+
+/* Special */
+
+{{ settings.typography_quote_new | font_face }}
+
+{% assign quote_font = settings.typography_quote_new %}
+$font-stack-quote: 'PMGrotesk', {{ quote_font.family }}, {{ quote_font.fallback_families }};
+$font-weight-quote: 300, {{ quote_font.weight }};
+$font-style-quote: normal, {{ quote_font.style }};
+
+$quoteFontRegularStyle: {{ quote_font.style }};
+{% if quote_font.style == 'italic' %}
+  {%- assign quote_font_normal = quote_font | font_modify: 'style', 'normal' -%}
+  {{ quote_font_normal | font_face }}
+  $quoteFontRegularStyle: normal;
+{% endif %}
+
+@mixin font-quote(){
+  font-family: $font-stack-quote;
+  font-weight: $font-weight-quote;
+  font-style: $font-style-quote;
+}
 
 
 

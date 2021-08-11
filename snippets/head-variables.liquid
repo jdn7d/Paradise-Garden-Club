@@ -1,18 +1,4 @@
-{%comment%}
-{%- assign headings_font = settings.headings_font -%}
-{%- assign body_font = settings.body_font -%}
-{%- assign menus_font = settings.menus_font -%}
 
-<link rel="preload" href="{{ headings_font | font_url }}" as="font" type="font/woff2" crossorigin>
-
-{%- if body_font != headings_font -%}
-  <link rel="preload" href="{{ body_font | font_url }}" as="font" type="font/woff2" crossorigin>
-{%- endif -%}
-
-{%- if menus_font != body_font and menus_font != headings_font -%}
-  <link rel="preload" href="{{ menus_font | font_url }}" as="font" type="font/woff2" crossorigin>
-{%- endif -%}
-{%endcomment%}
 
 <style type="text/css">
 
@@ -37,14 +23,7 @@
   {%- assign color_background_third = settings.color_background | color_darken: 9 -%}
   {%- assign color_background_fourth = settings.color_background | color_darken: 3 -%}
 
-  
-  /* Fonts */
-  
-  @font-face {
-    font-family: "PMGrotesk";
-    src: url('{{ "PMGrotesk-Bold.woff" | asset_url }}') format("woff");
-  }
-
+ 
 
   :root {
 
@@ -67,16 +46,16 @@
 
     /* Font variables */
 
-    --font-stack-headings: "PMGrotesk", {{ headings_font.fallback_families }};
+    --font-stack-headings: "PMGrotesk", sans-serif;
     --font-weight-headings: 400;
     --font-style-headings: normal;
 
-    --font-stack-body: "PMGrotesk", {{ body_font.fallback_families }};
+    --font-stack-body: "PMGrotesk", sans-serif;
     --font-weight-body: 400;
     --font-weight-body-bold: 700; 
     --font-style-body: normal;
 
-    --font-stack-menu: "PMGrotesk", {{ menus_font.fallback_families }};
+    --font-stack-menu: "PMGrotesk", sans-serif;
     --font-weight-menu: 400;
     --font-weight-menu-bold: 600; 
     --font-style-menu: normal;

@@ -58,7 +58,8 @@
 </head>
 
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template.name }} template-{{ template | replace: '.', ' ' | handle }} no-touchevents">
-
+  
+  {% include 'custom-fonts' %}
   <a href="#main" class="visually-hidden skip-to-content" tabindex="1">{{ 'general.navigation.skip_to_content' | t }}</a>
 
   {%- section 'header' -%}
