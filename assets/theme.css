@@ -10802,13 +10802,22 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1;
 }
 
-p {
-    font-family: 'PMGrotesk-Regular' !important;
+p.title {
+    font-family: var(--RTGravi) !important;
+}
+p.subtitle {
+    font-family: 'PMGrotesk-Regular';
 }
 
 p.caption {
     margin-bottom: 14px !important;
 }
+
+a.button.light.with-icon {
+    background: var(--coral) !important;
+    color: black !important;
+}
+
 
 .site-box {
     background: var(--tan);
