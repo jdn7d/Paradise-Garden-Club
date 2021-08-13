@@ -5,6 +5,7 @@
       <div class="site-box-content">
         <div class="content">
           <h2 class="title">{{ section.settings.title | escape }}</h2>
+          
         </div>
       </div>
     </div>
@@ -42,13 +43,15 @@
 
     <div id="block-{{ block.id }}" {{ block.shopify_attributes }} class="site-box box--center-align box--column-flow {{ size_class }} box__image-text hard-align align--{{ section.settings.txt_align }} button-true" data-order="{{ index | minus: 1 }}">
 
-      <a class="site-box-content" href="{{ c_link }}">
-
+      <h1 class="site-box-content" href="{{ c_link }}">
+        
         <div class="content">
           <h2 class="title add-hr">{{ c_title | escape }}</h2>
+          <a class="button clear" href="/collections/classes-and-events">Shop now</a>
+      
         </div>
 
-      </a>
+      
 
       <span class="site-box-background with-image" aria-hidden="true">
 

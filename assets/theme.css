@@ -10842,7 +10842,8 @@ p.caption {
 
 .site-box {
     background: var(--tan);
-    border-top:  var(--black-border);
+    
+    border-bottom: var(--black-border) !important;
     
 }
 
@@ -10857,6 +10858,12 @@ p.caption {
 
 .site-box.box--big.lap--box--bigger.box__text.box--typo-big.box--center-align.box--column-flow {
     background: var(--tan);
+}
+
+/* Small underline */
+#shopify-product-reviews .mount-collectionlist .spr-header .site-box-content:after, .mount-collectionlist #shopify-product-reviews .spr-header .site-box-content:after, .mount-collectionlist .box__heading .site-box-content:after, 
+#shopify-product-reviews .box__image-text.box--typo-big .add-hr.spr-header-title:after, #shopify-product-reviews .box__image-text.spr-content .add-hr.spr-header-title:after, #shopify-product-reviews .box__image-text.spr-content .title.add-hr:after, #shopify-product-reviews .box__image-text.spr-header .add-hr.spr-header-title:after, #shopify-product-reviews .box__image-text.spr-header .title.add-hr:after, .box__image-text.box--typo-big #shopify-product-reviews .add-hr.spr-header-title:after, .box__image-text.box--typo-big .title.add-hr:after {
+    display: none;
 }
 
 /* Homepage Collection boxes  */
@@ -10882,13 +10889,18 @@ a.button.light.with-icon {
     color: black !important;
     border:  none;
 }
-
 a.button {
     margin-top: 65px !important;
     background: var(--coral);
     color: black !important;
     border:  var(--black-border);
 }
+
+a.button.clear {
+    background: none;
+    border: 3px solid var(--coral);
+}
+
 
 .site-box.box__announcement .title {
     color: var(--coral);
