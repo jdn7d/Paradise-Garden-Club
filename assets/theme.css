@@ -2791,7 +2791,6 @@ img {
 .site-header.desktop-view--classic {
     z-index: 999;
     top: 0 !important;
-    border-bottom: none !important;
     box-shadow: 0 1px 0 0 rgba(var(--color-background-third), 1)
 }
 
@@ -10785,14 +10784,18 @@ li.has-submenu:hover>ul {
     z-index: 9;
 }
 
+.site-header {
+    background: var(--tan);
+    border-bottom: 3px solid black;
+}
+
+/* Announcment bar */
 .site-header .box__banner {
     background: var(--coral) !important;
     color: black !important;
 }
 
-.site-header {
-    background: var(--tan);
-}
+
 
 h1, h2, h3, h4, h5, h6 {
     font-family: "RTGravi-Soft" !important;
@@ -10802,12 +10805,18 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1;
 }
 
+h2.title.light {
+    color: white !important;
+}
+
 p.title {
     font-family: var(--RTGravi) !important;
 }
 p.subtitle {
     font-family: 'PMGrotesk-Regular';
 }
+
+
 
 p.caption {
     margin-bottom: 14px !important;
@@ -10853,6 +10862,8 @@ a.button.light.with-icon {
 .site-nav.style--classic .menu-link {
  	font-family: PMGrotesk-Regular !important; 
 }
+
+
 
 /*============================================================================
   #Fonts
