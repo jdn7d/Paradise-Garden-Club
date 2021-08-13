@@ -10909,6 +10909,10 @@ a.button.clear {
     line-height: 1.2;
 }
 
+/* Footer */
+.site-footer, .site-footer .site-box {
+    background: #211d11 !important;
+}
 
 
 
