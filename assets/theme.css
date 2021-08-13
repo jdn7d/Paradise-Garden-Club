@@ -10771,6 +10771,7 @@ li.has-submenu:hover>ul {
     --black-border: 3px solid black;
 }
 
+
 /* Nav Bar */
 
 .site-nav.style--classic .menu-link {
@@ -10820,7 +10821,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h2.title.light {
-    color: white !important;
+    color: var(--tan) !important;
 }
 
 p.title {
@@ -10836,11 +10837,8 @@ p.caption {
     margin-bottom: 14px !important;
 }
 
-a.button.light.with-icon {
-    background: var(--coral) !important;
-    color: black !important;
-}
 
+/* Site-Boxes */
 
 .site-box {
     background: var(--tan);
@@ -10855,6 +10853,10 @@ a.button.light.with-icon {
 .site-box.box--big.lap--box--small-fl.box--typo-big.box--center-align.box--column-flow.box__heading {
     background: var(--tan) !important;
     border-right: var(--black-border);
+}
+
+.site-box.box--big.lap--box--bigger.box__text.box--typo-big.box--center-align.box--column-flow {
+    background: var(--tan);
 }
 
 /* Homepage Collection boxes  */
@@ -10873,6 +10875,13 @@ a.button.light.with-icon {
     border-top:  var(--black-border);
 }
 
+/* Buttons */
+
+a.button.light.with-icon {
+    background: var(--coral) !important;
+    color: black !important;
+    border:  none;
+}
 
 a.button {
     margin-top: 65px !important;
