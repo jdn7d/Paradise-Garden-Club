@@ -10768,6 +10768,7 @@ li.has-submenu:hover>ul {
     --coral: #e29a80;
     --PMGrotesk: "PMGrotesk";
     --RTGravi: "RTGravi-Soft";
+    --black-border: 3px solid black;
 }
 
 /* Nav Bar */
@@ -10786,7 +10787,7 @@ li.has-submenu:hover>ul {
 
 .site-header {
     background: var(--tan);
-    border-bottom: 3px solid black;
+    border-bottom: var(--black-border);
 }
 
 a.menu-link {
@@ -10843,7 +10844,7 @@ a.button.light.with-icon {
 
 .site-box {
     background: var(--tan);
-    border-top: 3px solid black;
+    border-top:  var(--black-border);
     
 }
 
@@ -10853,22 +10854,23 @@ a.button.light.with-icon {
 
 .site-box.box--big.lap--box--small-fl.box--typo-big.box--center-align.box--column-flow.box__heading {
     background: var(--tan) !important;
+    border-right: var(--black-border);
 }
 
 /* Homepage Collection boxes  */
 .site-box.box--small.lap--box--small-lg.box--typo-small.box--center-align.box--column-flow.box__heading {
-    border-right: 3px solid black !important;
+    border-right:  var(--black-border) !important;
     background: #d9d6c2;
 }
 
 .site-box.box--small.box--typo-small.lap--box--small-lg.box--center-align.box--no-padding.box--column-flow.box__collection {
-    border-right: 3px solid black;
+    border-right:  var(--black-border);
   
 }
 
 .product-item.color--light.style--one .caption {
     background: var(--tan);
-    border-top: 3px solid black;
+    border-top:  var(--black-border);
 }
 
 
@@ -10876,7 +10878,7 @@ a.button {
     margin-top: 65px !important;
     background: var(--coral);
     color: black !important;
-    border: 3px solid black;
+    border:  var(--black-border);
 }
 
 .site-box.box__announcement .title {
