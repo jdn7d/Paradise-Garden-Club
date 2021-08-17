@@ -10867,18 +10867,28 @@ p.caption {
 /* Site-Boxes */
 
 .site-box {
-    background: var(--tan);
-    
-    border-bottom: var(--black-border) !important;
-    
+    background: var(--tan) !important;
 }
 
-.site-box.box--big.box--center-align.box--column-flow.box__slideshow-item {
-    background: var(--tan) !important;
+div#block-5852fea28ec1 {
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+}
+
+div#shopify-section-16281840722107ac4a {
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+}
+
+div#shopify-section-1490617026526 {
+    border-top: 3px solid black;
+}
+
+.site-box.box--small-fl.box__heading.box--typo-big.box--center-align.box--column-flow.box--add-hr, .site-box.box--small.lap--box--small-lg {
+    border-bottom: 3px solid black;
 }
 
 .site-box.box--big.lap--box--small-fl.box--typo-big.box--center-align.box--column-flow.box__heading {
-    background: var(--tan) !important;
     border-right: var(--black-border);
 }
 
