@@ -434,7 +434,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .rte h3, .template- #main h3 {
     font-size: 1.25rem;
-    margin-bottom: 30px
+    /* margin-bottom: 30px */
 }
 
 .rte h4, .template- #main h4 {
@@ -10779,7 +10779,7 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
     letter-spacing: .01em;
     font-weight: 500;
-    line-height: 1;
+    line-height: 1 !important;
 }
 
 /* Nav Bar */
@@ -10829,6 +10829,7 @@ p.title {
 }
 p.subtitle {
     font-family: 'PMGrotesk-Regular';
+    margin-top: 24px !important;
 }
 
 p.caption {
@@ -10970,8 +10971,11 @@ button#Subscribe {
     border-right: 3px solid black;
 }
 
-h3 {
+h3 strong {
     font-size: 2.2rem !important;
+    margin-bottom: 12px;
+    letter-spacing: .03em;
+    font-weight: 500;
 }
 
 p {
