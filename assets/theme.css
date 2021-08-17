@@ -10823,6 +10823,12 @@ p strong {
     border-bottom: var(--black-border);
 }
 
+img {
+    max-width: 150px;
+    max-height: 80px !important;
+    height: auto !important;
+}
+
 a.menu-link {
     display: flex;
     flex-direction: column;
