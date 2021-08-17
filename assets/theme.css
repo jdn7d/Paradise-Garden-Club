@@ -10782,6 +10782,28 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1 !important;
 }
 
+h3 strong {
+    font-size: 2.2rem !important;
+    margin-bottom: 12px;
+    letter-spacing: .03em;
+    font-weight: 500;
+}
+
+p {
+    line-height: 1.5 !important;
+    font-size: 1.15vw !important;
+    margin-bottom: 24px;
+}
+
+p strong {
+    font-weight: 700;
+}
+
+.block-heading {
+    font-size: 2rem;
+    margin-bottom: 2px;
+}
+
 /* Nav Bar */
 
 .site-nav.style--classic .menu-link {
@@ -10820,10 +10842,6 @@ a.menu-link {
     color: black !important;
 }
 
-h2.title {
-    text-align: left;
-}
-
 h2.title.light {
     color: var(--tan) !important;
 }
@@ -10840,6 +10858,11 @@ p.caption {
     margin-bottom: 14px !important;
 }
 
+
+
+.box__heading.box--typo-small p, #shopify-product-reviews .box--typo-small.spr-header p {
+    margin: 10px 0 0 0
+}
 
 /* Site-Boxes */
 
@@ -10860,7 +10883,7 @@ p.caption {
 }
 
 .site-box.box--big.lap--box--bigger.box__text.box--typo-big.box--center-align.box--column-flow {
-    background: var(--tan);
+    background: var(--dark-tan);
 }
 
 /* Small underline */
@@ -10896,7 +10919,8 @@ a.button.light.with-icon {
     border:  none;
 }
 a.button {
-    margin-top: 65px !important;
+    margin-top: 60px !important;
+    font-size: 1.125rem;
     background: var(--coral);
     color: black !important;
     border:  var(--black-border);
@@ -10913,6 +10937,11 @@ a.button.clear {
     font-family: var(--RTGravi);
     text-transform: uppercase;
     line-height: 1.2;
+}
+
+#section-ad59ef041715 .site-box.box__slideshow-split .slideshow-item .site-box .button {
+    background: #211d11;
+    margin-top: 20px !important;
 }
 
 /* Footer 
@@ -10978,25 +11007,17 @@ button#Subscribe {
     border-right: 3px solid black;
 }
 
-h3 strong {
-    font-size: 2.2rem !important;
-    margin-bottom: 12px;
-    letter-spacing: .03em;
-    font-weight: 500;
-}
-
-p {
-    line-height: 1.5 !important;
-    font-size: 1.2rem !important;
-    margin-bottom: 24px;
-}
-
-
 @media screen and (min-width: 1441px) {
     .title {
         font-size: 3.8vw!important;
         line-height: 1!important;
     }
+
+    h3 {
+        font-size: 2vw!important;
+        line-height: 1!important;
+    }
+    
 }
 /*============================================================================
   #Fonts
