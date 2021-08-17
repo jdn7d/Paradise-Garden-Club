@@ -10914,7 +10914,10 @@ a.button.clear {
     background: #211d11 !important;
 }
 
-
+.site-box.footer-box.box--big.lap--box--bigger.box--top-align.box--column-flow.box__footer {
+    /* display: flex; */
+    flex-flow: row nowrap;
+}
 
 /*============================================================================
   #Fonts
