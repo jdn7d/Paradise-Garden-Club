@@ -10912,11 +10912,39 @@ a.button.clear {
 /* Footer */
 .site-footer, .site-footer .site-box {
     background: #211d11 !important;
+    font-size: 1rem;
+    line-height: 1.1;
+    letter-spacing: .015em;
+    color: #e7e5d8;
+    /* top: -1px; */
+    z-index: 9;
+    background: #211d11;
 }
 
 .site-box.footer-box.box--big.lap--box--bigger.box--top-align.box--column-flow.box__footer {
     /* display: flex; */
     flex-flow: row nowrap;
+    align-items: flex-start!important;
+}
+
+.site-footer h4 {
+    font-size: 1rem;
+    color: #e7e5d8;
+}
+.site-footer input:not([type="submit"]) {
+    background: #211d11 !important;
+    color: #e7e5d8!important;
+    border: 2px solid rgba(231,229,216,.5)!important;
+}
+
+.caption.rte p {
+    color: #e7e5d8!important;
+}
+button#Subscribe {
+    background: rgba(231,229,216,.5);
+    border: 3px solid transparent!important;
+    color: black !important;
+    font-size: 1.125rem;
 }
 
 /*============================================================================
