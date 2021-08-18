@@ -10759,9 +10759,7 @@ li.has-submenu:hover>ul {
     }
 }
 
-/*
------Paradise Custom Styles-----
-*/
+/* -----Paradise Custom Styles----- */
 :root {
     --tan: #e7e5d8;
     --dark-tan: #d9d6c2;
@@ -10770,7 +10768,6 @@ li.has-submenu:hover>ul {
     --RTGravi: "RTGravi-Soft";
     --black-border: 3px solid black;
 }
-
 
 /* Typography */ 
 
@@ -10806,21 +10803,10 @@ p strong {
 
 /* Nav Bar */
 
-.site-nav.style--classic .menu-link {
-    font-size: 1rem;
-  	font-family: var(--PMGrotesk);
-    text-transform: uppercase;
-    line-height: 1;
-    color: #211d11;
-    letter-spacing: .1rem;
-    position: relative;
-    padding: 15px 20px;
-    z-index: 9;
-}
-
 .site-header {
     background: var(--tan);
     border-bottom: var(--black-border);
+    
 }
 
 img {
@@ -10829,13 +10815,44 @@ img {
     height: auto !important;
 }
 
+
+.site-nav.style--classic .menu-link {
+    font-size: 1rem;
+  	font-family: var(--PMGrotesk);
+    text-transform: uppercase;
+    font-weight: 700 !important;
+    display: ;
+    line-height: 1;
+    color: #211d11;
+    letter-spacing: .1rem;
+    position: relative;
+    padding: 26px 20px;
+    z-index: 9;
+}
+
+.primary-menu .icon {
+    position: absolute;
+    overflow: hidden;
+    cursor: pointer;
+    top: 1px;
+    width: 10%;
+    left: 45%;
+    margin: auto !important;
+    transition: all 150ms linear;
+}
+
 a.menu-link {
     display: flex;
     flex-direction: column;
 }
 
-.primary-menu .icon {
-    margin: auto !important;
+.arrow-down {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid black;
+    position: absolute;
+    left: 45%;
+    margin-top: 25px;
 }
 
 .site-nav.style--classic .menu-link {
