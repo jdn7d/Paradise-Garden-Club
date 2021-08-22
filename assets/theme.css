@@ -9111,12 +9111,13 @@ body[data-single-variant] .store-availabilities-modal__variant-title {
 
 .box__banner.style--bar {
     width: 100%;
+    display: block !important;
     padding: 8px 14px;
     font-size: .75rem;
     overflow: hidden;
     position: absolute;
     height: 34px;
-    top: -34px;
+    top: 111px;
     left: 0
 }
 
@@ -10779,6 +10780,28 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1 !important;
 }
 
+h1.title {
+    text-align: center !important;
+}
+
+.rte h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    margin-top: 80px;
+    letter-spacing: .03em;
+}
+
+.rte h2 {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    letter-spacing: .03em;
+}
+
+.rte a {
+    border-bottom: 1px dotted;
+    color: #7c883e;
+}
+
 h3 strong {
     font-size: 2.2rem !important;
     margin-bottom: 12px;
@@ -10973,7 +10996,7 @@ a.button.clear {
     margin-top: 20px !important;
 }
 
-/* Footer 
+/* Footer */
 .site-footer, .site-footer .site-box {
     background: #211d11 !important;
     font-size: 1rem;
@@ -10985,6 +11008,7 @@ a.button.clear {
     padding: 3vw 3vw 0px;
 }
 
+
 .site-box.footer-box.box--big.lap--box--bigger.box--top-align.box--column-flow.box__footer {
     flex-flow: row nowrap;
     align-items: flex-start!important;
@@ -10992,12 +11016,13 @@ a.button.clear {
     gap: 6vw;
 }
 
+
 .site-footer .footer-content, .site-footer .site-copyright {
     width: auto;
     min-width: 20%;
     max-width: 50%;
 }
-*/
+
 
 /* Follow us tab */
 div.footer-box:nth-child(1)>div:nth-child(2) {
@@ -11048,6 +11073,38 @@ button#Subscribe {
     }
     
 }
+
+/* Login */
+
+input {
+    border: 2px solid #211d11 !important;
+    background: #d9d6c2 ;
+}
+
+input:focus {
+    background: #ccc8ac !important;
+    outline: #ccc8ac !important;
+    border: 2px solid #ccc8ac !important;
+    font-size: 1.2rem;
+    letter-spacing: .2rem;
+}
+ 
+input[type=submit] {
+    border: 2px solid black;
+    background: var(--coral) !important;
+    color: black !important;
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+input[type=submit]:hover {
+    color: var(--tan) !important;
+    background: var(--coral) !important;
+}
+
+
+
+
 /*============================================================================
   #Fonts
 ==============================================================================*/ 
