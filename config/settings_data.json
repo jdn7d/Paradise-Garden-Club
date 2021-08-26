@@ -95,7 +95,7 @@
           "banner_enable": true,
           "content": "",
           "bg_color": "#141618",
-          "txt_color": "#ffffff"
+          "txt_color": "black"
         }
       },
       "product-footer": {
@@ -356,7 +356,7 @@
           "collection": "",
           "content": "<p>Use this banner to inform customers about discounts that are available for your products.<\/p>",
           "bg_color": "#141618",
-          "txt_color": "#ffffff"
+          "txt_color": "black"
         }
       },
       "collection-footer": {
@@ -425,7 +425,7 @@
           "banner_enable": false,
           "content": "<p>Use this banner to greet your customers and inform them about new collections, sales or shipping policies.<\/p>",
           "bg_color": "#141618",
-          "txt_color": "#ffffff"
+          "txt_color": "black"
         }
       },
       "text-columns-with-icons": {
@@ -620,7 +620,7 @@
             "banner_enable": false,
             "content": "<p>Use this banner to greet your customers and inform them about new collections, sales or shipping policies.<\/p>",
             "bg_color": "#141618",
-            "txt_color": "#ffffff"
+            "txt_color": "black"
           }
         },
         "product-footer": {
@@ -970,7 +970,7 @@
             "collection": "",
             "content": "<p>Use this banner to inform customers about discounts that are available for your products.<\/p>",
             "bg_color": "#141618",
-            "txt_color": "#ffffff"
+            "txt_color": "black"
           }
         },
         "collection-footer": {
@@ -1039,7 +1039,7 @@
             "banner_enable": false,
             "content": "<p>Use this banner to greet your customers and inform them about new collections, sales or shipping policies.<\/p>",
             "bg_color": "#141618",
-            "txt_color": "#ffffff"
+            "txt_color": "black"
           }
         }
       },
@@ -1457,7 +1457,7 @@
             "banner_enable": false,
             "content": "<p>Use this banner to greet your customers and inform them about new collections, sales or shipping policies.<\/p>",
             "bg_color": "#141618",
-            "txt_color": "#ffffff"
+            "txt_color": "black"
           }
         },
         "collection-footer": {
@@ -1471,7 +1471,7 @@
             "collection": "",
             "content": "<p>Use this banner to inform customers about discounts that are available for your products.<\/p>",
             "bg_color": "#141618",
-            "txt_color": "#ffffff"
+            "txt_color": "black"
           }
         },
         "product-recommendations": {
@@ -1508,7 +1508,7 @@
             "product": "",
             "content": "<p>Use this banner to inform customers about special features for your products, or various promotions like free shipping.<\/p>",
             "bg_color": "#141618",
-            "txt_color": "#ffffff"
+            "txt_color": "black"
           }
         },
         "1559028063151": {
@@ -1566,7 +1566,7 @@
             "banner_enable": false,
             "content": "<p>Use this banner to greet your customers and inform them about new collections, sales or shipping policies.<\/p>",
             "bg_color": "#141618",
-            "txt_color": "#ffffff"
+            "txt_color": "black"
           }
         }
       },

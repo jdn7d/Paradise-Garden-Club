@@ -10179,7 +10179,7 @@ a.box__image-text:hover .site-box-background.with-image {
         transform: none !important
     }
     .box__slideshow-split .slideshow-item .button:not(:hover), .box__slideshow-split .slideshow-item #shopify-product-reviews .spr-summary-actions-newreview:not(:hover), #shopify-product-reviews .box__slideshow-split .slideshow-item .spr-summary-actions-newreview:not(:hover), .box__slideshow-split .slideshow-item .button:not(.hover), .box__slideshow-split .slideshow-item #shopify-product-reviews .spr-summary-actions-newreview:not(.hover), #shopify-product-reviews .box__slideshow-split .slideshow-item .spr-summary-actions-newreview:not(.hover) {
-        background: #fff !important;
+        background:#e7e5d8!important;
         color: #000 !important
     }
     .box__slideshow-split .slideshow-item .button path, .box__slideshow-split .slideshow-item #shopify-product-reviews .spr-summary-actions-newreview path, #shopify-product-reviews .box__slideshow-split .slideshow-item .spr-summary-actions-newreview path {
@@ -10830,6 +10830,7 @@ p strong {
 .site-header {
     background: var(--tan);
     border-bottom: var(--black-border);
+    margin: 0px !important;
     
 }
 
@@ -11077,14 +11078,54 @@ button#Subscribe {
 }
  
 @media screen and (max-width: 1024px) {
+    .site-header {
+        padding: 20px 30px!important;
+        border-bottom: 0;
+        box-shadow: 0 0 10px rgb(0 0 0 / 8%) !important;
+        top: 0!important;
+    }
+
+    .site-header .box__banner {
+        display: none !important;
+    }
+
+    .title {
+        font-size: 1.4rem!important;
+        line-height: 1!important;
+    }
+
+    h2.title {
+        font-size: 1.75rem !important;
+        line-height: 1.2 !important;
+        text-align: center !important;
+    }
+
     p {
-        font-size: 1rem!important;
+        font-size: 1rem !important;
+        opacity: .8;
+        margin: 10px 0 0 0;
+        line-height: 1.2!important;
+    }
+
+    p.subtitle {
+        font-size: 1rem !important;
+        line-height: 1.4 !important; 
+    }
+
+    p.caption {
+        font-size: 1.125rem !important;
     }
 
     .arrow-down {
         left: 24%;
         margin-top: 11px;
     }
+
+    /*
+    a.button {
+        width: 65vw !important;
+    }
+    */
 
     #menu-promotion > div {
         display: none;
@@ -11093,6 +11134,25 @@ button#Subscribe {
     .site-nav.style--sidebar .primary-menu .menu-link {
         text-transform: capitalize;
     }
+
+    h3 strong {
+        font-size: 1.25rem!important;
+    }
+
+    .rte p {
+        font-size: 1.2rem!important;
+        margin-top: 13px;
+    }
+
+    blockquote p {
+        font-size: 1.5rem!important;
+    }
+
+    .site-box.box--big.lap--box--small-fl.box--typo-big.box--center-align.box--column-flow.box__heading {
+        border-bottom: var(--black-border);
+    }
+
+
 }
 
 /* Vertical mobile menu */
@@ -11100,6 +11160,10 @@ button#Subscribe {
 @media screen and (max-width: 768px) {
     .site-box.box--big.lap--box--small-fl.box--typo-big.box--top-align.box--column-flow.box__heading.box--add-hr {
         border-bottom: var(--black-border);
+    }
+
+    .rte blockquote {
+        font-size: 1.5rem !important;
     }
 }
 
