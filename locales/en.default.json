@@ -23,8 +23,8 @@
       "subtext_html": "Try to <a href=\"#search\">search<\/a> for it or head over to <a href=\"\/collections\/all\">our shop<\/a> and navigate on from there."
     },
     "newsletter": {
-      "email_label": "Email Address",
-      "submit": "Sign up",
+      "email_label": "Your email",
+      "submit": "Join now",
       "confirmation": "Thanks for subscribing!"
     },
     "search": {
