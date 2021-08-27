@@ -11152,6 +11152,13 @@ button#Subscribe {
         border-bottom: var(--black-border);
     }
 
+    .site-box.footer-box.box--big.lap--box--bigger.box--top-align.box--column-flow.box__footer {
+        display: block;
+        align-items: self-start;
+        margin-left: 30px !important;
+        width: 100%;
+    }
+
 
 }
 
