@@ -1011,7 +1011,7 @@ select {
 }
 
 .product-variants-holder .regular-select-content.content-opened {
-    outline: 1px solid rgba(var(--color-background-third), 1)
+    /* outline: 1px solid rgba(var(--color-background-third), 1) */
 }
 
 .product-variants-holder .regular-select-content {
@@ -9907,7 +9907,7 @@ a.box__image-text:hover .site-box-background.with-image {
 
 .box__slideshow-split {
     border-bottom: 1px solid rgba(var(--color-background-third), 1);
-    background: rgba(var(--color-background), 1) !important;
+    /* background: rgba(var(--color-background), 1) !important; */
     display: block
 }
 
@@ -10887,9 +10887,18 @@ a.menu-link {
 
 /* Announcment bar */
 .site-header .box__banner {
-    background: var(--coral) !important;
-    color: black !important;
     border-bottom: var(--black-border);
+    font-size: 1.15vw!important;
+    padding: 22px 0 !important;
+    text-transform: uppercase;
+    font-family: var(--RTGravi);
+    letter-spacing: 0.02rem;
+    line-height: 1.5 !important;
+    font-weight: 400;
+}
+
+.site-header .box__banner a:hover {
+    color: var(--tan) !important;
 }
 
 h2.title.light {
@@ -10924,6 +10933,10 @@ p.caption {
     background: var(--dark-tan);
 }
 
+/*
+.site-box {
+    border: var(--black-border) !important;
+} */
 /* Homepage Borders */
 
 div#block-5852fea28ec1 {
@@ -10955,6 +10968,8 @@ div#shopify-section-1490617026526 {
 .site-box.box--small.lap--box--small-lg.box--typo-small.box--center-align.box--column-flow.box__heading {
     border-right:  var(--black-border) !important;
 }
+
+
 
 /* Small underline */
 #shopify-product-reviews .mount-collectionlist .spr-header .site-box-content:after, .mount-collectionlist #shopify-product-reviews .spr-header .site-box-content:after, .mount-collectionlist .box__heading .site-box-content:after, 
@@ -11086,10 +11101,6 @@ button#Subscribe {
         border-bottom: 0;
         box-shadow: 0 0 10px rgb(0 0 0 / 8%) !important;
         top: 0!important;
-    }
-
-    .site-header .box__banner {
-        display: none !important;
     }
 
     .title {
