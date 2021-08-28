@@ -3287,7 +3287,7 @@ body.sidebar-move .site-menu-handle, body.sidebar-move .site-filter-handle, body
 }
 
 .site-search-handle {
-    top: -2px;
+    top: 8px;
     height: 26px
 }
 
@@ -3441,7 +3441,7 @@ body.sidebar-move .site-menu-handle, body.sidebar-move .site-filter-handle, body
 
 .site-cart-handle {
     height: 28px;
-    top: -4px;
+    top: 6px;
     transition: opacity 150ms linear
 }
 
