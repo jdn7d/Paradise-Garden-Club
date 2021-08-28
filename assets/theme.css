@@ -10763,6 +10763,7 @@ li.has-submenu:hover>ul {
 
 /* -----Paradise Custom Styles----- */
 :root {
+    --black-brown: #211d11;
     --tan: #e7e5d8;
     --dark-tan: #d9d6c2;
     --coral: #e29a80;
@@ -10835,8 +10836,8 @@ p strong {
 }
 
 img {
-    max-width: 150px;
-    max-height: 80px !important;
+    max-width: 100%;
+    max-height: auto !important;
     height: auto !important;
 }
 
@@ -10845,10 +10846,10 @@ img {
     font-size: 1rem;
   	font-family: var(--PMGrotesk);
     text-transform: uppercase;
-    font-weight: 700 !important;
+    font-weight: 500 !important;
     display: ;
     line-height: 1;
-    color: #211d11;
+    /* color: #211d11; */
     letter-spacing: .1rem;
     position: relative;
     padding: 26px 20px;
@@ -10881,7 +10882,7 @@ a.menu-link {
 }
 
 .site-nav.style--classic .menu-link {
-    font-family: PMGrotesk-Regular !important; 
+    font-family: var(--RTGravi) !important; 
 }
 
 
@@ -11011,7 +11012,6 @@ a.button.clear {
     letter-spacing: .015em;
     color: #e7e5d8;
     border-right: none!important;
-    background: #211d11;
     padding: 3vw 3vw 0px;
 }
 
@@ -11223,10 +11223,12 @@ input[type=submit]:hover {
 /* Headings */
 
 @font-face {
-  font-family: "PMGrotesk-Regular";
+  font-family: "PMGrotesk-Regular"; 
   src: url("PMGrotesk-Regular.woff") format("woff");
   font-weight: 400;
 }
+
+
       
 @font-face {
   font-family: "RTGravi-Soft";
