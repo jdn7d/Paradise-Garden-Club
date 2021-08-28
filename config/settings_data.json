@@ -1566,7 +1566,7 @@
             "banner_enable": false,
             "content": "<p>Use this banner to greet your customers and inform them about new collections, sales or shipping policies.<\/p>",
             "bg_color": "#141618",
-            "txt_color": "#00000"
+            "txt_color": ""
           }
         }
       },

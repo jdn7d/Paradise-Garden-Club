@@ -1484,7 +1484,7 @@ img {
 }
 
 .template-index .shopify-section:nth-child(2n+1) .site-box:not(.box__product-gallery), .template-index .shopify-section:nth-child(2n+1) .template- div:not(.box__product-gallery)[class*="title"], .template- .template-index .shopify-section:nth-child(2n+1) div:not(.box__product-gallery)[class*="title"], .template-index .shopify-section:nth-child(2n+1) .template- div:not(.box__product-gallery)[class*="body"], .template- .template-index .shopify-section:nth-child(2n+1) div:not(.box__product-gallery)[class*="body"], .template-index .shopify-section:nth-child(2n+1) #shopify-product-reviews .spr-header:not(.box__product-gallery), #shopify-product-reviews .template-index .shopify-section:nth-child(2n+1) .spr-header:not(.box__product-gallery), .template-index .shopify-section:nth-child(2n+1) #shopify-product-reviews .spr-content:not(.box__product-gallery), #shopify-product-reviews .template-index .shopify-section:nth-child(2n+1) .spr-content:not(.box__product-gallery) {
-    background-color: rgba(var(--color-background-second), 1)
+   /* background-color: rgba(var(--color-background-second), 1) */
 }
 
 .shopify-section:not(.mount-slideshow) .site-box, .shopify-section:not(.mount-slideshow) .template- div[class*="title"], .template- .shopify-section:not(.mount-slideshow) div[class*="title"], .shopify-section:not(.mount-slideshow) .template- div[class*="body"], .template- .shopify-section:not(.mount-slideshow) div[class*="body"], .shopify-section:not(.mount-slideshow) #shopify-product-reviews .spr-header, #shopify-product-reviews .shopify-section:not(.mount-slideshow) .spr-header, .shopify-section:not(.mount-slideshow) #shopify-product-reviews .spr-content, #shopify-product-reviews .shopify-section:not(.mount-slideshow) .spr-content {
@@ -10763,7 +10763,8 @@ li.has-submenu:hover>ul {
 /* -----Paradise Custom Styles----- */
 :root {
     --black-brown: #211d11; 
-    /* 4c4c47 */
+    /* 4c4c47 
+    7C883E green */
     --tan: #e7e5d8;
     --dark-tan: #d9d6c2;
     --coral: #e29a80;
@@ -10913,6 +10914,10 @@ p.caption {
     margin: 10px 0 0 0
 }
 
+
+.site-box.box--small.lap--box--small-lg.box--typo-small.box--center-align.box--column-flow.box__heading {
+    background: var(--dark-tan) !important;
+}
 /* Homepage Background */
 
 .site-box.box--big.lap--box--bigger.box__text.box--typo-big.box--center-align.box--column-flow {
