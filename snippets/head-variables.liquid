@@ -2,6 +2,33 @@
 
 <style type="text/css">
 
+
+
+@font-face {
+  font-family: "PMGrotesk"; 
+  src: url("PMGrotesk-Regular.woff") format("woff");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "PMGrotesk";
+  src: url('{{ "PMGrotesk-Medium.woff" | asset_url }}') format("woff");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "PMGrotesk";
+  font-weight: 700;
+  src: url('{{ "PMGrotesk-Bold.woff" | asset_url }}') format("woff");
+}
+
+@font-face {
+  font-family: "RTGravi-Soft";
+  src: url("rtgravi-soft-webfont.woff") format("woff");
+  font-weight: 400;
+}
+
+
   {%- assign color_text = settings.color_text -%}
   {%- assign color_text_brightness = color_text | color_brightness -%}
   {%- if color_text_brightness > 150 -%}
@@ -52,12 +79,11 @@
 
     --font-stack-body: "PMGrotesk", sans-serif;
     --font-weight-body: 400;
-    --font-weight-body-bold: 700; 
+    --font-weight-body-bold: 600;
     --font-style-body: normal;
 
     --font-stack-menu: "PMGrotesk", sans-serif;
     --font-weight-menu: 400;
-    --font-weight-menu-bold: 600; 
     --font-style-menu: normal;
 
   }

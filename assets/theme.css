@@ -10909,7 +10909,7 @@ p.title {
     font-family: var(--RTGravi) !important;
 }
 p.subtitle {
-    font-family: 'PMGrotesk-Regular';
+    font-family: 'PMGrotesk';
     margin-top: 30px !important;
 }
 
@@ -11230,20 +11230,28 @@ input[type=submit]:hover {
   #Fonts
 ==============================================================================*/ 
 
-/* Headings */
-
 @font-face {
-  font-family: "PMGrotesk-Regular"; 
-  src: url("PMGrotesk-Regular.woff") format("woff");
-  font-weight: 400;
+    font-family: "PMGrotesk"; 
+    src: url("PMGrotesk-Regular.woff") format("woff");
+    font-weight: 400;
 }
 
-
-      
 @font-face {
-  font-family: "RTGravi-Soft";
-  src: url("rtgravi-soft-webfont.woff") format("woff");
-  font-weight: 400;
+    font-family: "PMGrotesk";
+    src: url('{{ "PMGrotesk-Medium.woff" | asset_url }}') format("woff");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "PMGrotesk";
+    font-weight: 700;
+    src: url('{{ "PMGrotesk-Bold.woff" | asset_url }}') format("woff");
+}
+
+@font-face {
+    font-family: "RTGravi-Soft";
+    src: url("rtgravi-soft-webfont.woff") format("woff");
+    font-weight: 400;
 }
 
       
