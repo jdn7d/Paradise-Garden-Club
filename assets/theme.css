@@ -5133,7 +5133,7 @@ body.sidebar-move .site-menu-handle, body.sidebar-move .site-filter-handle, body
 }
 
 .product--add-to-cart-form button[type="submit"].button, .product--add-to-cart-form #shopify-product-reviews button.spr-summary-actions-newreview[type="submit"], #shopify-product-reviews .product--add-to-cart-form button.spr-summary-actions-newreview[type="submit"] {
-    font-size: .8125rem !important;
+    font-size: 1.125rem !important;
     padding: 0 30px !important;
     margin-top: 26px !important;
     height: 55px !important;
@@ -10771,6 +10771,8 @@ li.has-submenu:hover>ul {
     --PMGrotesk: "PMGrotesk";
     --RTGravi: "RTGravi-Soft";
     --black-border: 3px solid black;
+    --green: #7C883E;
+    --yellow: #E0C552;
 }
 
 /* Typography */ 
@@ -11016,6 +11018,62 @@ a.button.clear {
 #section-ad59ef041715 .site-box.box__slideshow-split .slideshow-item .site-box .button {
     background: #211d11;
     margin-top: 20px !important;
+}
+
+/* Product Pages */
+
+p.product-vendor {
+    display: none;
+}
+
+.box__product-content .product-title {
+    line-height: 1.2;
+    font-size: 7vh;
+    letter-spacing: .05em;
+    margin: 0 0 8px -4px;
+}
+
+.box__product-content .product-price {
+    opacity: .92;
+    letter-spacing: .15em;
+    font-size: 1.25rem;
+    opacity: .92;
+}
+
+.product--add-to-cart-form .product-variant-holder__label {
+    font-size: 1rem;
+    letter-spacing: .08em;
+}
+
+.product-variant__container .product-variant__item label {
+    border: none;
+    text-decoration: underline;
+    text-underline-offset: .2rem;
+    opacity: .66 !important;
+    font-size: 1rem;
+}
+
+.product-variant__container .product-variant__item input:checked+label {
+    opacity: 1 !important;
+}
+
+.product--add-to-cart-form .quantity-selector {
+    border-color: var(--black-border) !important;
+}
+
+button.button.color {
+    background: var(--coral);
+    color: var(--black-brown) !important;
+    font-size: 1.125rem !important; 
+    font-weight: 700;
+    
+    &:hover {
+        box-shadow: 7px 7px $MMYellow, 14px 14px $MMGreen;
+    }
+}
+
+button.button.color:hover {
+    box-shadow: 7px 7px var(--yellow), 14px 14px var(--green);
 }
 
 /* Footer */
