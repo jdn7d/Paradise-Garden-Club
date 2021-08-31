@@ -772,7 +772,7 @@ input[type="submit"] {
 .button .icon, #shopify-product-reviews .spr-summary-actions-newreview .icon, .menu-promotion a.button .icon {
     width: 0;
     height: 100%;
-    display: block;
+    display: none;
     text-align: right;
     position: absolute;
     right: 40px;
