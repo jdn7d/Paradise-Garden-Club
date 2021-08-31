@@ -10937,6 +10937,10 @@ p.caption {
     background: var(--dark-tan);
 }
 
+.site-box.box--big.box--center-align.box--column-flow.box__slideshow-item {
+    background: var(--tan) !important;
+}
+
 /*
 .site-box {
     border: var(--black-border) !important;
@@ -11041,6 +11045,7 @@ a.button {
     background: var(--coral);
     color: black !important;
     border:  var(--black-border);
+    line-height: 50px;
 }
 
 a.button.clear {
@@ -11057,6 +11062,10 @@ a.button.clear {
 #section-ad59ef041715 .site-box.box__slideshow-split .slideshow-item .site-box .button {
     background: #211d11;
     margin-top: 20px !important;
+}
+
+a.button:hover, a.button.light.with-icon:hover {
+    color: var(--tan) !important;
 }
 
 /* Product Pages */
@@ -11465,5 +11474,32 @@ $quoteFontRegularStyle: {{ quote_font.style }};
   font-style: $font-style-quote;
 }
 
+ul.submenu.login-submenu {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: auto;
+    padding: 10px 0;
+    margin: 0 auto;
+    background: #e7e5d8;
+    text-align: left;
+    display: flex;
+    flex-flow: row wrap;
+    border-bottom: 3px solid #211d11;
+}
 
 
+
+ul.submenu.login-submenu {
+    padding: 0px;
+    display: none;
+    height: 600px !important;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+
+
+div#section-login{
+    height: 100%;
+}
