@@ -805,7 +805,7 @@ input[type="submit"] {
 }
 
 .no-touchevents .button.with-icon:hover, .no-touchevents #shopify-product-reviews .with-icon.spr-summary-actions-newreview:hover, #shopify-product-reviews .no-touchevents .with-icon.spr-summary-actions-newreview:hover, .button.with-icon.focus, #shopify-product-reviews .with-icon.focus.spr-summary-actions-newreview {
-    padding-right: 60px
+   /* padding-right: 60px */
 }
 
 .no-touchevents .button.with-icon:hover .icon, .no-touchevents #shopify-product-reviews .with-icon.spr-summary-actions-newreview:hover .icon, #shopify-product-reviews .no-touchevents .with-icon.spr-summary-actions-newreview:hover .icon, .button.with-icon.focus .icon, #shopify-product-reviews .with-icon.focus.spr-summary-actions-newreview .icon {
@@ -11032,6 +11032,9 @@ a.button.light.with-icon {
     color: black !important;
     border:  none;
 }
+
+
+
 a.button {
     margin-top: 60px !important;
     font-size: 1.125rem;
