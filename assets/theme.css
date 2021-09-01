@@ -8389,8 +8389,8 @@ body[data-single-variant] .store-availabilities-modal__variant-title {
 .site-nav.style--classic .submenu {
     background: transparent;
     position: absolute;
-    opacity: 1;
-    visibility: visible;
+    opacity: 0;
+    visibility: hidden;
     transition: opacity 100ms linear 40ms, visibility 100ms linear 40ms;
     padding-top: 31px
 }
@@ -11476,27 +11476,19 @@ $quoteFontRegularStyle: {{ quote_font.style }};
 
 ul.submenu.login-submenu {
     position: absolute;
-    left: 0;
-    width: 100%;
-    height: auto;
-    padding: 10px 0;
-    margin: 0 auto;
     background: #e7e5d8;
     text-align: left;
-    display: flex;
-    flex-flow: row wrap;
-    /* border-bottom: 3px solid #211d11; */
-}
-
-
-
-ul.submenu.login-submenu {
+    left: 0;
+    width: 100%;
     padding: 0px;
     display: none;
     height: 60px!important;
-    top: 111px;
     margin-top: 0px;
     margin-bottom: 0px;
+    border-top: var(--black-border);
+    padding-top: 31px;
+    top: 108px;
+    flex-flow: row wrap;
 }
 
 .site-nav .submenu .link-text {
@@ -11537,11 +11529,6 @@ div#section-login {
 
 .site-nav .submenu .input-wrapper {
     float: left;
-    border-right: 2px solid #211d11;
-}
-
-div#LoginRecoverTitle {
-  
 }
 
 .site-nav .submenu #LoginRecoverTitle div {
@@ -11618,12 +11605,9 @@ input:not([type=radio]):not([type=checkbox]):not([type=submit]) {
     transition: all 150ms linear;
 }
 
-.site-nav .submenu .input-wrapper {
-    float: left;
-    border-right: 2px solid #211d11;
-}
+
 .simple-grid .one-quarter {
-    width: 30%;
+    width: 33%;
 }
 
 .simple-grid label {
@@ -11646,14 +11630,6 @@ input:not([type=radio]):not([type=checkbox]):not([type=submit]) {
     border: none;
     height: 58px;
     width: 100%;
-}
-
-.site-nav .submenu .input-wrapper {
-    float: left;
-    border-right: 2px solid #211d11;
-}
-.simple-grid .one-quarter {
-    width: 25%;
 }
 
 .link-text
