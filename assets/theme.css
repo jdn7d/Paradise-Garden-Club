@@ -10814,6 +10814,11 @@ h1.title {
 .rte a {
     border-bottom: 1px dotted;
     color: #7c883e;
+    font-family: var(--PMGrotesk);
+}
+
+.rte blockquote, .template- #main blockquote{
+    font-family: var(--PMGrotesk);
 }
 
 h3 strong {
