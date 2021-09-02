@@ -22,10 +22,12 @@
           {{ section.settings.title | escape }}
         </h2>
 
+        {% comment %}
         {%- if section.settings.title == "Community Classes & Events" -%}
         <a class="button" href="/collections/classes-and-events">Shop now</a>
         {%- endif -%}
-
+        {%endcomment %}
+        
         {%- if product_count == 0 and per_page == 4 -%}
           <!-- blank -->
         {%- else -%}
