@@ -18,6 +18,28 @@
 
     </div>
 
+    {% unless section.settings.bg_img == blank %}  
+
+    <span class="site-box-background with-image {{ section.settings.bg_style }}" aria-hidden="true">
+
+      <img
+        src="{{ section.settings.bg_img | img_url: '960x' }}" alt="{{ section.settings.title | escape }}"
+        srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+        data-srcset="{{ section.settings.bg_img | img_url: '600x' }} 480w, {{ section.settings.bg_img | img_url: '860x' }} 720w, {{ section.settings.bg_img | img_url: '1100x' }} 960w, {{ section.settings.bg_img | img_url: '1440x' }} 1600w, {{ section.settings.bg_img | img_url: '2100x' }} 1920w"
+        data-sizes="auto"
+        class="lazyload" 
+      />
+
+      {%- if settings.show_preloader and section.settings.title == blank -%}
+        <span class="lazy-preloader"></span>
+      {%- endif -%}
+
+      <noscript><span class="ll-fallback" style="background-image:url({{ section.settings.bg_img | img_url: '960x' }})"></span></noscript> 
+
+    </span> 
+
+
+  {% endunless %}
 
   </div>
 
