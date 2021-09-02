@@ -10817,6 +10817,7 @@ h1.title {
     font-family: var(--PMGrotesk);
 }
 
+
 .rte blockquote, .template- #main blockquote{
     font-family: var(--PMGrotesk);
 }
@@ -10831,11 +10832,9 @@ h3 strong {
 p {
     line-height: 1.5 !important;
     font-size: 1.15vw !important;
-    margin-bottom: 24px !important;
+    margin-bottom: 24px;
     font-family: var(--PMGrotesk) !important;
 }
-
-
 
 p strong {
     font-weight: 700;
@@ -10852,7 +10851,6 @@ p strong {
     color: #211d11!important;
     border-right: var(--black-border);
     border-bottom: var(--black-border);
-    
 }
 
 /* Nav Bar */
@@ -11030,7 +11028,7 @@ div#block-1628183781e4e01adc-0 {
 }
 
 #shopify-product-reviews .box--add-hr.spr-header .site-box-content:after, .box__heading.box--add-hr .site-box-content:after {
-    display: none;
+    display:
 }
 
 
@@ -11188,10 +11186,6 @@ button.button.color:hover {
     font-weight: 400;
 }
 
-.input-group input#Email {
-    width: 60% !important;
-    background: #211d11!important;
-}
 
 /* Follow us tab */
 div.footer-box:nth-child(1)>div:nth-child(2) {
@@ -11236,6 +11230,19 @@ button#Subscribe {
 
 textarea {
     border: 2px solid black;
+}
+
+.input-group input#Email {
+    width: 60% !important;
+    background: #211d11!important;
+}
+
+.grid__item.portable--one-whole.palm--one-whole input#ContactFormName {
+    border: 2px solid black !important;
+}
+
+input#ContactFormEmail, input#ContactFormPhone {
+    border: 2px solid black !important;
 }
 
 @media screen and (min-width: 1441px) {
@@ -11603,7 +11610,10 @@ div#section-login {
 }
 
 input {
-
+    border-top: none !important;
+    border-left: none !important;
+    border-bottom: none !important;
+    border-right: 2px solid #211d11!important;
     background: #d9d6c2;
 }
 
