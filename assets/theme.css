@@ -2684,6 +2684,10 @@ img {
     border-bottom: 0 !important
 }
 
+ul.footer-links {
+    font-family: var(--PMGrotesk);
+}
+
 .site-footer .input-group {
     margin-top: -10px;
     flex-wrap: wrap;
@@ -10822,9 +10826,11 @@ h3 strong {
 p {
     line-height: 1.5 !important;
     font-size: 1.15vw !important;
-    margin-bottom: 24px;
+    margin-bottom: 24px !important;
     font-family: var(--PMGrotesk) !important;
 }
+
+
 
 p strong {
     font-weight: 700;
@@ -10837,6 +10843,11 @@ p strong {
 
 .product-badge {
     font-family: var(--PMGrotesk);
+    background: #e0c552!important;
+    color: #211d11!important;
+    border-right: var(--black-border);
+    border-bottom: var(--black-border);
+    
 }
 
 /* Nav Bar */
@@ -11013,6 +11024,9 @@ div#block-1628183781e4e01adc-0 {
     display: none;
 }
 
+#shopify-product-reviews .box--add-hr.spr-header .site-box-content:after, .box__heading.box--add-hr .site-box-content:after {
+    display: none;
+}
 
 
 .product-item.color--light.style--one .caption {
@@ -11169,6 +11183,10 @@ button.button.color:hover {
     font-weight: 400;
 }
 
+.input-group input#Email {
+    width: 60% !important;
+    background: #211d11!important;
+}
 
 /* Follow us tab */
 div.footer-box:nth-child(1)>div:nth-child(2) {
@@ -11610,8 +11628,6 @@ input {
 
 input:not([type=radio]):not([type=checkbox]):not([type=submit]) {
     height: 55px;
-    width: 60%;
-    background: #211d11!important;
     font-family: PMGrotesk,Prompt,sans-serif;
     font-weight: 400,400;
     font-style: normal,normal;
