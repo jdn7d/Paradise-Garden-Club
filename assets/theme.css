@@ -11598,10 +11598,7 @@ div#section-login {
 }
 
 input {
-    border-top: none !important;
-    border-left: none !important;
-    border-bottom: none !important;
-    border-right: 2px solid #211d11!important;
+
     background: #d9d6c2;
 }
 
