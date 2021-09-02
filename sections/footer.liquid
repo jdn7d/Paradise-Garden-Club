@@ -73,7 +73,10 @@
         {%- if forloop.index == 2 -%} 
           <p class="site-copyright to-bottom-content lap--hide">
             {{ 'general.copyright' | t }} &copy; {{ 'now' | date: "%Y" }} 
-            {{ shop.name | link_to: routes.root_url }}
+            <span>Paradise Garden Club
+              Design & brand concept by The Wade Brothers studio.
+            </span>
+           
           </p>
         {% else %}
           <p class="site-copyright to-bottom-content">
