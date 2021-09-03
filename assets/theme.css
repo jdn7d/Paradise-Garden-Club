@@ -435,6 +435,8 @@ h1, h2, h3, h4, h5, h6 {
 .rte h3, .template- #main h3 {
     font-size: 1.25rem;
     /* margin-bottom: 30px */
+    margin-top: 30px;
+    margin-bottom: 10px;
 }
 
 .rte h4, .template- #main h4 {
@@ -3579,6 +3581,9 @@ body.sidebar-move .site-menu-handle, body.sidebar-move .site-filter-handle, body
     .site-menu-handle, .site-filter-handle, .site-search-handle, .site-cart-handle {
         margin: 10px 8px 0
     }
+
+    
+
 }
 
 #site-search-handle>a.hover, #site-cart-handle>a.hover, #site-menu-handle>a.hover {
@@ -8394,12 +8399,10 @@ body[data-single-variant] .store-availabilities-modal__variant-title {
 }
 
 .site-nav.style--classic .submenu {
-    background: transparent;
+    background: 0 0;
     position: absolute;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 100ms linear 40ms, visibility 100ms linear 40ms;
-    padding-top: 31px
+    transition: max-height .4s linear 40ms;
+    padding-top: 31px;
 }
 
 .site-nav.style--classic .submenu .submenu-holder {
@@ -8427,9 +8430,8 @@ body[data-single-variant] .store-availabilities-modal__variant-title {
 }
 
 .site-nav.style--classic .has-submenu:hover .submenu, .site-nav.style--classic .has-submenu.focus .submenu, .site-nav.style--classic #menu-item-collections.focus .submenu {
-    opacity: 1;
-    visibility: visible;
     max-height: 300px;
+    z-index: 10;
     transition: max-height .4s ease-in-out;
 }
 
@@ -10910,6 +10912,9 @@ a.menu-link {
     font-family: var(--RTGravi) !important; 
 }
 
+header#site-header {
+    min-height: 95px !important;
+}
 
 /* Announcment bar */
 .site-header .box__banner {
@@ -11271,6 +11276,10 @@ input#ContactFormEmail, input#ContactFormPhone {
         line-height: 1!important;
     }
 
+    h1.title {
+        font-size: 3.75rem !important;
+    }
+
     h2.title {
         font-size: 1.75rem !important;
         line-height: 1.2 !important;
@@ -11308,6 +11317,17 @@ input#ContactFormEmail, input#ContactFormPhone {
         width: 65vw !important;
     }
     */
+
+    .site-cart-handle {
+        height: 28px;
+        top: -6px;
+        transition: opacity 150ms linear
+    }
+
+    .site-search-handle {
+        top: -5px;
+        height: 26px;
+    }
 
     #menu-promotion > div {
         display: none;
@@ -11347,6 +11367,11 @@ input#ContactFormEmail, input#ContactFormPhone {
 
     .site-footer .footer-content:not(:last-child) {
         margin-bottom: 30px !important;
+    }
+
+    .logo-img img {
+        max-width: 130px;
+        max-height: 40px !important;
     }
 
 }
