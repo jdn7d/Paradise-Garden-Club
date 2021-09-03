@@ -10769,6 +10769,11 @@ li.has-submenu:hover>ul {
         margin-top: 0 !important;
         height: 100%
     }
+
+    button#Subscribe {
+        margin-top: 10px !important;
+        margin-right: 30px !important;
+    }
 }
 
 /* -----Paradise Custom Styles----- */
@@ -11103,6 +11108,12 @@ a.button:hover, a.button.light.with-icon:hover {
     color: var(--tan) !important;
 }
 
+.box--product-image.primary:hover ~.product-item.alt.longarrow {
+    opacity: 1;
+    z-index: 10;
+    color: var(--black-brown);
+}
+
 /* Product Pages */
 
 p.product-vendor {
@@ -11120,12 +11131,20 @@ p.product-vendor {
     opacity: .92;
     letter-spacing: .15em;
     font-size: 1.25rem;
-    opacity: .92;
+    font-family: var(--PMGrotesk);
 }
 
 .product--add-to-cart-form .product-variant-holder__label {
     font-size: 1rem;
     letter-spacing: .08em;
+}
+
+.product--add-to-cart-form .quantity-selector {
+    border: 2px solid black !important;
+}
+
+.krown-tabs .titles {
+    font-family: var(--PMGrotesk);
 }
 
 .product-variant__container .product-variant__item label {
@@ -11293,6 +11312,10 @@ input#ContactFormEmail, input#ContactFormPhone {
         line-height: 1.2!important;
     }
 
+    p.title {
+        font-size: 1.5rem !important;
+    }
+
     p.subtitle {
         font-size: 1rem !important;
         line-height: 1.4 !important; 
@@ -11300,6 +11323,21 @@ input#ContactFormEmail, input#ContactFormPhone {
 
     p.caption {
         font-size: 1.125rem !important;
+    }
+
+
+    .site-box.box__heading.box--typo-small .title {
+        font-size: 1.375rem !important;
+    }
+
+    .product-item.color--light.style--one .caption {
+        background: rgba(var(--color-background),1);
+        border-top: var(--black-border);
+    }
+
+    .product-item.alt .caption .overflowed {
+        letter-spacing: .05rem;
+        font-size: 1.125rem!important;
     }
 
     .arrow-down {
