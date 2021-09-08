@@ -11108,7 +11108,7 @@ a.button:hover, a.button.light.with-icon:hover {
     color: var(--tan) !important;
 }
 
-.box--product-image.primary:hover ~.product-item.alt.longarrow {
+.box--product-image.primary:hover ~.product-item.alt .longarrow {
     opacity: 1;
     z-index: 10;
     color: var(--black-brown);
