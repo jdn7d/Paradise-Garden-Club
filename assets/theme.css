@@ -1262,7 +1262,7 @@ img {
 .to-bottom-content {
     position: absolute;
     bottom: 60px;
-    left: 20%
+    /* left: 20% */
 }
 
 @media screen and (max-width: 1024px) {
@@ -9122,7 +9122,7 @@ body[data-single-variant] .store-availabilities-modal__variant-title {
 
 .box__banner.style--bar {
     width: 100%;
-    display: block !important;
+    display: block;
     padding: 8px 14px;
     font-size: .75rem;
     overflow: hidden;
@@ -11030,6 +11030,11 @@ div#block-1628183781e4e01adc-0 {
     border-bottom: var(--black-border);
 }
 
+/* Newsletter popup */
+.popup-text button#Subscribe {
+    color: var(--black-brown) !important;
+}
+
 
 /* Small underline */
 #shopify-product-reviews .mount-collectionlist .spr-header .site-box-content:after, .mount-collectionlist #shopify-product-reviews .spr-header .site-box-content:after, .mount-collectionlist .box__heading .site-box-content:after, 
@@ -11052,6 +11057,12 @@ div#block-1628183781e4e01adc-0 {
     outline: 3px solid black;
     background: var(--tan);
     color: var(--black-brown) !important;
+}
+
+.box--product-image.primary:hover ~ .longarrow {
+    opacity: 1 !important;
+    color: black;
+    z-index: 100;
 }
 
 .product-item.color--light.style--one .caption:hover {
@@ -11108,7 +11119,7 @@ a.button:hover, a.button.light.with-icon:hover {
     color: var(--tan) !important;
 }
 
-.box--product-image.primary:hover ~.product-item.alt .longarrow {
+.box--product-image.primary:hover ~.product-item.alt.longarrow {
     opacity: 1;
     z-index: 10;
     color: var(--black-brown);
@@ -11348,7 +11359,7 @@ input#ContactFormEmail, input#ContactFormPhone {
     .site-header .box__banner {
         font-size: .8rem !important;
         border-top: var(--black-border);
-        top: 96px;
+        top: 95px;
     }
     /*
     a.button {
@@ -11424,6 +11435,7 @@ input#ContactFormEmail, input#ContactFormPhone {
     .rte blockquote {
         font-size: 1.5rem !important;
     }
+    
 }
 
 /* Login */
@@ -11781,6 +11793,40 @@ input:not([type=radio]):not([type=checkbox]):not([type=submit]) {
   letter-spacing: 0pt !important;
 }
 
+#insta-feed .instafeed-container, .instafeed-shopify .instafeed-container {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    padding: 0;
+    color: #fff;
+    width: 100% !important;
 
+}
 
+#insta-feed a, .instafeed-shopify a {
+    border: none!important;
+    position: relative;
+    display: flex !important;
+    padding: 0;
+    z-index: 999999;
+    text-decoration: none;
+    color: transparent;
+    display: flex;
+    flex-wrap: wrap;
+    width: 25%;
+    /* height: 100%; */
+    flex-direction: row;
+}
 
+#insta-feed {
+    width: 100%;
+    height: 231px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#insta-feed h2 {
+    font-size: 20px;
+    width: 25%;
+    font-family: Helvetica;
+}

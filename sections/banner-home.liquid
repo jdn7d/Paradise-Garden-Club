@@ -8,7 +8,23 @@
 
 </div>
 
+
+<script>
+  const closeBtn=  document.querySelector(".close");
+
+  closeBtn.addEventListener("click", ()=> {
+    // closeBtn.parentElement.remove();
+    document.querySelector(".site-header .box__banner").classList.add("hide");
+  });
+
+</script>
+
 <style type="text/css">
+
+  .hide {
+    display: none !important;
+  }
+
   .close polygon {
     fill: {{ section.settings.txt_color }};
   }
