@@ -11288,6 +11288,10 @@ input#ContactFormEmail, input#ContactFormPhone {
     border: 2px solid black !important;
 }
 
+.grid__item.one-whole input.button {
+    border: 2px solid black !important;
+}
+
 @media screen and (min-width: 1441px) {
     .title {
         font-size: 3.8vw!important;
@@ -11431,6 +11435,12 @@ input#ContactFormEmail, input#ContactFormPhone {
         max-height: 40px !important;
     }
 
+}
+
+/* small line */
+
+#shopify-product-reviews .box--add-hr.spr-header .site-box-content:after, .box__heading.box--add-hr .site-box-content:after {
+    display: none;
 }
 
 /* Vertical mobile menu */
