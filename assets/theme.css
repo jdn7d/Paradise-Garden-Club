@@ -10677,7 +10677,7 @@ a.box__image-text:hover .site-box-background.with-image {
 }
 
 body {
-    padding-top: var(--header-size)
+    padding-top: var(--header-size) !important;
 }
 
 body.with-announcement {
@@ -11280,6 +11280,10 @@ input#ContactFormEmail, input#ContactFormPhone {
     border: 2px solid black !important;
 }
 
+.simple-grid input.btn.right {
+    border: 2px solid black !important;
+}
+
 @media screen and (min-width: 1441px) {
     .title {
         font-size: 3.8vw!important;
@@ -11793,6 +11797,7 @@ input:not([type=radio]):not([type=checkbox]):not([type=submit]) {
   letter-spacing: 0pt !important;
 }
 
+
 #insta-feed .instafeed-container, .instafeed-shopify .instafeed-container {
     display: inline-block;
     position: relative;
@@ -11829,4 +11834,9 @@ input:not([type=radio]):not([type=checkbox]):not([type=submit]) {
     font-size: 20px;
     width: 25%;
     font-family: Helvetica;
+}
+
+
+div#shopify-section-header {
+    height: 1px;
 }
