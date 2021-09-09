@@ -11832,7 +11832,7 @@ input:not([type=radio]):not([type=checkbox]):not([type=submit]) {
 }
 
 
-#insta-feed h2, #insta-feed>a:not(.instafeed-lightbox), .box--small {
+#insta-feed h2, #insta-feed>a:not(.instafeed-lightbox) {
     width: 25%;
     height: 50vh!important;
     min-height: 0!important;
@@ -11843,7 +11843,8 @@ input:not([type=radio]):not([type=checkbox]):not([type=submit]) {
     padding: 0!important;
     height: 100%!important;
     overflow: hidden;
-    border: var(--black-border);
+    border-right: var(--black-border);
+    border-bottom: var(--black-border);
 }
 
 #insta-feed, .instafeed-shopify {
@@ -11873,10 +11874,14 @@ input:not([type=radio]):not([type=checkbox]):not([type=submit]) {
     margin-bottom: 0px !important;
     align-items: center;
     justify-content: center;
-    border-bottom: 5px solid #211d11;
+    border-right: var(--black-border);
+    border-bottom: var(--black-border);
     font-family: Helvetica;
 }
 
+#insta-feed>a:nth-child(16) {
+    display: none !important;
+}
 
 div#shopify-section-header {
     height: 1px;
