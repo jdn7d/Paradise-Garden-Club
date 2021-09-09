@@ -11072,6 +11072,10 @@ div#block-1628183781e4e01adc-0 {
     color: var(--black-brown) !important;
 }
 
+.site-box.box--big.lap--box--small-fl.box--typo-big.box--top-align.box--column-flow.box__heading.box--add-hr {
+    border-bottom: var(--black-border);
+}
+
 
 
 
@@ -11438,6 +11442,14 @@ input#ContactFormEmail, input#ContactFormPhone {
 
     .rte blockquote {
         font-size: 1.5rem !important;
+    }
+
+    #insta-feed h2 {
+        width: 50% !important;
+    }
+
+    #insta-feed h2, #insta-feed>a:not(.instafeed-lightbox), .box--small {
+        width: 50% !important;
     }
     
 }
@@ -11881,6 +11893,10 @@ input:not([type=radio]):not([type=checkbox]):not([type=submit]) {
 
 #insta-feed>a:nth-child(16) {
     display: none !important;
+}
+
+img.js-lazy-image.js-lazy-image--handled {
+    height: 100% !important;
 }
 
 div#shopify-section-header {
