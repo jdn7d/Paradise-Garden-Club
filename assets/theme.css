@@ -10778,6 +10778,11 @@ li.has-submenu:hover>ul {
     }
 }
 
+
+
+
+
+
 /* -----Paradise Custom Styles----- */
 :root {
     --black-brown: #211d11; 
@@ -10822,7 +10827,6 @@ h1.title {
 
 .rte a {
     border-bottom: 1px dotted;
-    color: #7c883e;
     font-family: var(--PMGrotesk);
 }
 
@@ -10860,6 +10864,12 @@ p strong {
     color: #211d11!important;
     border-right: var(--black-border);
     border-bottom: var(--black-border);
+}
+
+
+
+a.title {
+    font-family: var(--PMGrotesk) !important;   
 }
 
 /* Nav Bar */
@@ -11244,6 +11254,16 @@ div#shopify-section-product-recommendations {
     box-shadow: 7px 7px var(--yellow), 14px 14px var(--green);
 }
 
+#site-cart .cart-item .actions {
+    /* height: 35px; */
+    display: none;
+}
+
+.template-cart .cart-out small, .cart-item .content .price {
+    font-family: var(--PMGrotesk);
+}
+
+
 /* Footer */
 .site-footer, .site-footer .site-box {
     background: #211d11 !important;
@@ -11344,9 +11364,24 @@ input#ContactFormEmail, input#ContactFormPhone {
 }
 
 .rte ol, .rte ul, .template- #main ol, .template- #main ul {
-    margin-top: 12px;
+    margin-top: 14px !important;
 }
 
+.site-box-content.reduce-top-margin .rte {
+    margin-top: 40px;
+}
+
+.site-box-content.reduce-top-margin .rte p {
+    margin-bottom: 24px;
+}
+
+.site-box-content .rte p span {
+    color: #FF8000;
+}
+
+.site-box-content .rte p a {
+    color: #FF8000;
+}
 
 @media screen and (min-width: 1441px) {
     .title {
@@ -11556,8 +11591,33 @@ input[type=submit]:hover {
     background: var(--coral) !important;
 }
 
+.grid__item.one-whole input#CustomerEmail {
+    border: 2px solid var(--black-brown) !important;
+}
 
+.grid__item.one-whole input#CustomerEmail:focus {
+    border: none !important;
+}
 
+.grid__item.one-whole input#CustomerPassword {
+    border: 2px solid var(--black-brown) !important;
+}
+
+.grid__item.one-whole input#CustomerPassword:focus {
+    border: none !important;
+}
+
+.errors li {
+    font-family: 'PMGrotesk';
+}
+
+a#customer_logout_link {
+    color: var(--green);
+}
+
+button#HideRecoverPasswordLink {
+    font-family: var(--PMGrotesk);
+}
 
 /*============================================================================
   #Fonts
