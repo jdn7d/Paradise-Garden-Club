@@ -9146,7 +9146,7 @@ body[data-single-variant] .store-availabilities-modal__variant-title {
 
 .box__banner.style--bar .exit svg {
     position: relative;
-    top: -4px
+    top: 0px
 }
 
 @media screen and (max-width: 640px) {
@@ -9155,7 +9155,7 @@ body[data-single-variant] .store-availabilities-modal__variant-title {
         padding-top: 9px
     }
     .box__banner.style--bar .exit svg {
-        top: -5px;
+        top: -1px;
         width: 35px
     }
 }
@@ -11131,6 +11131,12 @@ a.button:hover, a.button.light.with-icon:hover {
     color: var(--black-brown);
 }
 
+/* Collection Pages */
+
+#shopify-product-reviews .spr-header .rte div, .box__heading .rte div {
+    font-family: 'PMGrotesk';
+}
+
 /* Product Pages */
 
 p.product-vendor {
@@ -11214,7 +11220,12 @@ div#shopify-section-product-recommendations {
 .site-nav.style--sidebar .site-nav-container .subtitle {
     border-top: none;
     border-bottom: var(--black-border);
-    margin-top: 2px;
+    margin-top: 2px !important;
+    opacity: 1;
+}
+
+.site-nav.style--sidebar .site-nav-container .sidebar-title{
+    margin-top: 36px;
 }
 
 .cart-out small {
@@ -11350,12 +11361,16 @@ input#ContactFormEmail, input#ContactFormPhone {
     }
 
     .title {
-        font-size: 1.4rem!important;
+        font-size: 2.4rem!important;
         line-height: 1!important;
     }
 
     h1.title {
         font-size: 3.75rem !important;
+    }
+
+    .site-box-content h1.title {
+        font-size: 2.625rem !important;
     }
 
     h2.title {
@@ -11400,8 +11415,8 @@ input#ContactFormEmail, input#ContactFormPhone {
     }
 
     .arrow-down {
-        left: 24%;
-        margin-top: 11px;
+        left: 27%;
+        margin-top: 9px;
     }
 
     .site-header .box__banner {
@@ -11496,6 +11511,10 @@ input#ContactFormEmail, input#ContactFormPhone {
 
     #insta-feed h2, #insta-feed>a:not(.instafeed-lightbox), .box--small {
         width: 50% !important;
+    }
+
+    .site-header .box__banner {
+        font-size: 2.7vw !important;
     }
     
 }
