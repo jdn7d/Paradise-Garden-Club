@@ -9180,7 +9180,8 @@ body[data-single-variant] .store-availabilities-modal__variant-title {
     bottom: 30px;
     right: 30px;
     padding: 50px;
-    position: fixed
+    position: fixed;
+    color: var(--tan) !important
 }
 
 @media screen and (max-width: 768px), screen and (max-width: 1024px) and (orientation: portrait) {
@@ -11026,6 +11027,25 @@ p.caption {
     color: var(--black-brown) !important;
 }
 
+.shopify-section.active .popup-content {
+    opacity: 1;
+    transform: translateY(0);
+    background: var(--tan) !important;
+}
+
+.popup-content form .input-group input#Email {
+    width: 55%!important;
+    background: var(--dark-tan) !important;
+    border: 2px solid black !important;
+    border-right: none !important;
+}
+
+.popup-content form .input-group button#Subscribe {
+    font-size: 1.2rem;
+    background: var(--coral);
+    border: 2px solid black !important;
+}
+
 /* Homepage Background */
 
 .site-box.box--big.lap--box--bigger.box__text.box--typo-big.box--center-align.box--column-flow {
@@ -11178,7 +11198,7 @@ a.button:hover, a.button.light.with-icon:hover {
 }
 
 .collection__holder {
-    margin-top: 9px;
+   /*  margin-top: 9px; */
 }
 
 /* Product Pages */
@@ -11321,6 +11341,11 @@ input#ContactFormEmail, input#ContactFormPhone {
     color: #FF8000;
 }
 
+.site-box-content.reduce-top-margin, .rte span {
+    font-family: var(--PmGrotesk);
+}
+
+
 
 /* Login */
 
@@ -11414,6 +11439,12 @@ ul.submenu.login-submenu {
     margin-bottom: 0;
     line-height: 1!important;
     letter-spacing: 0!important;
+}
+
+/* Search */
+
+input.input-group-field {
+    border: 2px solid var(--black-brown) !important;
 }
 
 /* Cart */
