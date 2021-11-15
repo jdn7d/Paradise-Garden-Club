@@ -163,9 +163,30 @@
 
             {%- endform -%}
 
+            {%comment%}
             {%- if section.settings.show_local_pickup -%}
-              <div class="product-availability-container" data-store-availability-container data-base-url="{{ shop.url }}{{ routes.root_url }}"></div>
+                 <div class="product-availability-container" data-store-availability-container data-base-url="{{ shop.url }}{{ routes.root_url }}"></div>
             {%- endif -%}
+            {%endcomment%}
+            
+            {% if product.tags contains 'Shipping' or product.tags contains 'Delivery' or product.tags contains 'Pickup' %}
+            	 <div class="product-shipping-methods">
+   					<p>Available for:</p>
+						{% for tag in product.tags %}
+ 							 <!-- setup rules for Product Tags to search for shipping method tag -->
+  							{% if tag contains 'Shipping' %}
+  								<div class="product-badge tags shipping">Shipping</div>
+  							{% elsif tag contains 'Delivery' %}
+  							<div class="product-badge tags delivery">Local 
+   								Delivery</div>
+  							{% elsif tag contains 'Pickup'%}
+ 								<div class="product-badge tags pickup">Pick Up</div>
+  							{% else%}
+  							{% endif %}
+						{% endfor %}
+				</div>
+			{% endif %}
+
 
           </div>
 

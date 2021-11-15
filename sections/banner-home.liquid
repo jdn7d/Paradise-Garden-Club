@@ -15,6 +15,7 @@
   closeBtn.addEventListener("click", ()=> {
     // closeBtn.parentElement.remove();
     document.querySelector(".site-header .box__banner").classList.add("hide-button");
+  	document.querySelector("div#shopify-section-collection").classList.add('move');
   });
 
 </script>
@@ -24,10 +25,15 @@
   .hide_button {
     visibility: hidden !important;
   }
+  
+  .move {
+    margin-top: 11px !important;
+  }
 
   .close polygon {
     fill: {{ section.settings.txt_color }};
   }
+  
 </style>
 
 {% schema %}

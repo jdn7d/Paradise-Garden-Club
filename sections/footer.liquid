@@ -74,18 +74,11 @@
           <p class="site-copyright to-bottom-content lap--hide">
             {{ 'general.copyright' | t }} &copy; {{ 'now' | date: "%Y" }} 
             <span>Paradise Garden Club
-              Design & brand concept by The Wade Brothers studio.
+              Design &amp; brand concept by <a href="http://www.thewadebrothers.com/";>The Wade Brothers studio.</a>
             </span>
            
           </p>
-        {% else %}
-          <p class="site-copyright to-bottom-content">
-            <span class="hide lap--show">
-              {{ 'general.copyright' | t }} &copy; {{ 'now' | date: "%Y" }} 
-              {{ shop.name | link_to: routes.root_url }}
-            </span>
-            <span>{{ powered_by_link }}</span>
-          </p>
+ 
         {% endif %}
       {%- endif -%}
 

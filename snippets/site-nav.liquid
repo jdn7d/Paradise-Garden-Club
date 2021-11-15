@@ -2,13 +2,20 @@
 
 	{% assign collections_menu = linklists[collection_linklist] %}
 
-	{% if collections_menu != empty %}
+	
 
-		<li class="has-submenu" id="menu-item-collections" aria-controls="SiteNavLabel-{{ collections_menu.title | handle }}-{{ type }}" aria-expanded="false">
-		
-			<a class="menu-link" href="{{ routes.collections_url }}">
-				<span>{{ collections_menu.title | escape }}</span>
-				<span class="icon">{% render 'theme-symbols', icon: 'arrow_icon_down_slim' %}</span>
+	{% for link in linklists[linklist].links %}
+
+		<li {% if link.links != blank %} class="has-submenu" aria-controls="SiteNavLabel-{{ link.handle }}-{{ type }}" aria-expanded="false" {% endif %} id="menu-item-{{ link.handle }}">
+
+			<a class="menu-link {% if link.active or link.child_active %} active {% endif %}" href="{{ link.url }}">
+
+				<span>{{ link.title | escape }}</span>
+
+				{% if link.links != blank %}
+					<div class="arrow-down"></div>
+				{% endif %}
+
 			</a>
 
 			<ul class="submenu mega-menu" id="SiteNavLabel-{{ collections_menu.title | handle }}-{{ type }}">
@@ -79,63 +86,6 @@
 
 		</li>
 
-	{% endif %}
-
-	{% for link in linklists[linklist].links %}
-
-		<li {% if link.links != blank %} class="has-submenu" aria-controls="SiteNavLabel-{{ link.handle }}-{{ type }}" aria-expanded="false" {% endif %} id="menu-item-{{ link.handle }}">
-
-			<a class="menu-link {% if link.active or link.child_active %} active {% endif %}" href="{{ link.url }}">
-
-				<span>{{ link.title | escape }}</span>
-
-				{% if link.links != blank %}
-					<div class="arrow-down"></div>
-				{% endif %}
-
-			</a>
-
-			{% if link.links != blank %}
-
-				<ul class="submenu normal-menu" id="SiteNavLabel-{{ link.handle }}-{{ type }}">
-
-					<div class="submenu-holder">
-
-						{% for childlink in link.links %}
-
-							<li class="mega-link {% if childlink.links != blank %} has-babymenu" aria-controls="SiteNavLabel-{{ childlink.handle }}-{{ type }}" aria-expanded="false" {% else %} " {% endif %}>
-
-								<a class="menu-link {% if childlink.active or childlink.child_active %} active {% endif %}" href="{{ childlink.url }}">
-									<span>{{ childlink.title | escape }}</span>
-									{% if childlink.links != blank %}
-										<span class="icon">{% render 'theme-symbols', icon: 'arrow_icon_down_slim' %}</span>
-									{% endif %}
-								</a>
-
-								{% if childlink.links != blank %}
-
-									<div class="babymenu">
-										<ul id="SiteNavLabel-{{ childlink.handle }}-{{ type }}">
-											{% for babylink in childlink.links %}
-												<li><a class="menu-link {% if babylink.active %} active {% endif %}" href="{{ babylink.url }}"><span>{{ babylink.title | escape }}</span></a></li>
-											{% endfor %}
-										</ul>
-									</div>
-
-								{% endif %}
-
-							</li>
-
-						{% endfor %}
-
-					</div>
-
-				</ul>
-
-			{% endif %}
-
-		</li>
-
 	{% endfor %}
 
 	{% if shop.customer_accounts_enabled %}
@@ -180,7 +130,7 @@
 							{% endif %}
 						  </div>
 
-						  <input type="submit" class="button" value="{{ 'customer.login.sign_in' | t }}" style="float: left; margin: 0px; border: none; border-right: solid 2px #211d11; top: -0.5px; height: 58.5px;">
+						  <input type="submit" class="button" value="{{ 'customer.login.sign_in' | t }}" style="float: left; margin: 0px; border: none; border-right: solid 2px #211d11; top: 6px; padding-top: 45px; height: 107px; border-bottom: none !important;">
 
 						<div class="link-text">
 							<div class="link-text-wrapper">
